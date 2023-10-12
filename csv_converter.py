@@ -36,9 +36,21 @@ def clean_results(arr, key_arr):
     return entries
 
 
+def change_key_name(dict_arr):
+    for entry in dict_arr:
+        if '\ufeffCar Class' in entry:
+            entry['Car Class'] = entry.pop('\ufeffCar Class')
+
+        driver1 = f"{entry.pop('Driver Name (First Name)', '')} {entry.pop('Driver Name (Last Name)', '')}".strip(
+        )
+        entry['driver1'] = driver1
+    return dict_arr
+
+
 def csv_to_clean_keys(csv_file):
     dict_arr = csv_to_dict_arr(csv_file)
-    return clean_results(dict_arr, key_list)
+    cleaned = clean_results(dict_arr, key_list)
+    return change_key_name(cleaned)
 
 
 print(csv_to_clean_keys(file_path))
