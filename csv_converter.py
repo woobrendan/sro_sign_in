@@ -41,6 +41,12 @@ def change_key_name(dict_arr):
         if '\ufeffCar Class' in entry:
             entry['Car Class'] = entry.pop('\ufeffCar Class')
 
+        if 'Registered Car #' in entry:
+            entry["number"] = entry.pop('Registered Car #')
+
+        if 'Event Selection' in entry:
+            entry['event'] = entry.pop('Event Selection')
+
         if '2nd Driver (First Name)' in entry and entry['2nd Driver (First Name)']:
             driver2 = f"{entry.pop('2nd Driver (First Name)', '')} {entry.pop('2nd Driver (Last Name)', '')}".strip(
             )
