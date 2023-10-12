@@ -36,6 +36,15 @@ def clean_results(arr, key_arr):
     return entries
 
 
+def getSeries(series_name):
+    series = {
+        'GT4 America': 'PGT4A',
+        'GTWCA': 'GTWCA',
+        'GTA': 'GTAM'
+    }
+    return series[series_name]
+
+
 def change_key_name(dict_arr):
     for entry in dict_arr:
         if '\ufeffCar Class' in entry:
@@ -46,6 +55,13 @@ def change_key_name(dict_arr):
 
         if 'Event Selection' in entry:
             entry['event'] = entry.pop('Event Selection')
+
+        if entry['Car Class'] in ['TCX', 'TC', 'TCA']:
+            entry['series'] = 'TCAM'
+            entry['Driver Designation'] = entry.pop('Car Class')
+        else:
+            entry['series'] = getSeries(entry['Car Class'])
+            del entry['Car Class']
 
         if '2nd Driver (First Name)' in entry and entry['2nd Driver (First Name)']:
             driver2 = f"{entry.pop('2nd Driver (First Name)', '')} {entry.pop('2nd Driver (Last Name)', '')}".strip(
