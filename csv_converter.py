@@ -4,7 +4,7 @@ import io
 file_path = "./RA_entries.csv"
 
 key_list = [
-    'Car Class',
+    '\ufeffCar Class',
     'Driver Designation',
     'Registered Car #',
     'Team Name',
@@ -38,6 +38,7 @@ def clean_results(arr, key_arr):
 
 def csv_to_clean_keys(csv_file):
     dict_arr = csv_to_dict_arr(csv_file)
+    return clean_results(dict_arr, key_list)
 
 
-print(csv_to_dict_arr(file_path))
+print(csv_to_clean_keys(file_path))
