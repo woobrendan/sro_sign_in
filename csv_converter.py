@@ -82,10 +82,13 @@ def change_key_name(dict_arr):
 def sortBySeries(entry_arr):
     series = {}
     for entry in entry_arr:
-        if series[entry.series]:
-            series[entry.series].append(entry)
-        else:
-            series[entry.series] = [entry]
+        series_name = entry['series']
+
+        #  return array of entries if key exists, else return empty arr
+        series_entries = series.get(series_name, [])
+        series_entries.append(entry)
+        series[series_name] = series_entries
+
     return series
 
 
