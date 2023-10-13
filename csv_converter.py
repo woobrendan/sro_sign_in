@@ -100,4 +100,10 @@ def csv_to_clean_keys(csv_file):
     return sortBySeries(changed_keys)
 
 
-print(csv_to_clean_keys(file_path))
+# for testing GTWCA
+def getWCEntries(csv_file):
+    sorted_series = csv_to_clean_keys(csv_file)
+    return sorted_series['GTWCA']
+
+
+print(getWCEntries(file_path))
