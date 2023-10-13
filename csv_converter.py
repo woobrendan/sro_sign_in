@@ -27,6 +27,8 @@ def csv_to_dict_arr(csv_file):
             entries.append(entry_dict)
     return entries
 
+# Only keep keys from key list, removing unused columns
+
 
 def clean_results(arr, key_arr):
     entries = []
@@ -77,10 +79,22 @@ def change_key_name(dict_arr):
     return dict_arr
 
 
+def sortBySeries(entry_arr):
+    series = {}
+    for entry in entry_arr:
+        if series[entry.series]:
+            series[entry.series].append(entry)
+        else:
+            series[entry.series] = [entry]
+    return series
+
+
 def csv_to_clean_keys(csv_file):
     dict_arr = csv_to_dict_arr(csv_file)
     cleaned = clean_results(dict_arr, key_list)
-    return change_key_name(cleaned)
+    # return change_key_name(cleaned)
+    changed_keys = change_key_name(cleaned)
+    return sortBySeries(changed_keys)
 
 
 print(csv_to_clean_keys(file_path))
