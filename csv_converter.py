@@ -1,5 +1,6 @@
 import csv
-import io
+from functions.sortFuncs import sortBySeries
+from functions.helpers import getSeries
 
 file_path = "./RA_entries.csv"
 
@@ -38,15 +39,6 @@ def clean_results(arr, key_arr):
     return entries
 
 
-def getSeries(series_name):
-    series = {
-        'GT4 America': 'PGT4A',
-        'GTWCA': 'GTWCA',
-        'GTA': 'GTAM'
-    }
-    return series[series_name]
-
-
 def change_key_name(dict_arr):
     for entry in dict_arr:
         if '\ufeffCar Class' in entry:
@@ -80,23 +72,9 @@ def change_key_name(dict_arr):
     return dict_arr
 
 
-def sortBySeries(entry_arr):
-    series = {}
-    for entry in entry_arr:
-        series_name = entry['series']
-
-        #  return array of entries if key exists, else return empty arr
-        series_entries = series.get(series_name, [])
-        series_entries.append(entry)
-        series[series_name] = series_entries
-
-    return series
-
-
 def csv_to_clean_keys(csv_file):
     dict_arr = csv_to_dict_arr(csv_file)
     cleaned = clean_results(dict_arr, key_list)
-    # return change_key_name(cleaned)
     changed_keys = change_key_name(cleaned)
     return sortBySeries(changed_keys)
 
@@ -105,6 +83,3 @@ def csv_to_clean_keys(csv_file):
 def getWCEntries(csv_file):
     sorted_series = csv_to_clean_keys(csv_file)
     return sorted_series['GTWCA']
-
-
-# print(getWCEntries(file_path))
