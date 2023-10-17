@@ -17,9 +17,9 @@ key_list = [
 ]
 
 
-def csv_to_dict_arr(csv_file):
+def csv_to_dict_arr(csv_file_path):
 
-    with open(file_path, 'r', encoding='utf-8') as csv_file:
+    with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
         csv_reader = csv.reader(csv_file)
         headers = next(csv_reader)
         entries = []
@@ -72,14 +72,8 @@ def change_key_name(dict_arr):
     return dict_arr
 
 
-def csv_to_clean_keys(csv_file):
+def csv_to_series_entries(csv_file):
     dict_arr = csv_to_dict_arr(csv_file)
     cleaned = clean_results(dict_arr, key_list)
     changed_keys = change_key_name(cleaned)
     return sortBySeries(changed_keys)
-
-
-# for testing GTWCA
-def getWCEntries(csv_file):
-    sorted_series = csv_to_clean_keys(csv_file)
-    return sorted_series['GTWCA']
