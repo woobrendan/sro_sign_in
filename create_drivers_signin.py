@@ -15,7 +15,7 @@ header_mapping = {
 }
 
 
-def fill_drivers_signin(series_entries):
+def create_drivers_signin(series_entries):
     wb = openpyxl.load_workbook('./signin_templates/driver_master.xlsx')
     event = series_entries['GTAM'][0]['event']
 
@@ -39,4 +39,4 @@ def fill_drivers_signin(series_entries):
     wb.save(f'./Driver_Sign_in/{event}.xlsx')
 
 
-fill_drivers_signin(csv_to_series_entries(csv_file))
+create_drivers_signin(csv_to_series_entries(csv_file))
