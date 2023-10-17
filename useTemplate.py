@@ -1,7 +1,7 @@
 import openpyxl
 from csv_converter import getWCEntries
 
-template = './driver_template.xltx'
+template = '../signin_templates/driver_master.xlsx'
 csv_file = './RA_entries.csv'
 
 # {'Driver Designation': 'Pro - Am', 'Team Name': 'RealTime', 'number': '43', 'event': 'Road America', 'series': 'GTWCA', 'driver2': 'Adam Christodoulou', 'driver1': 'Anthony Bartone'}
@@ -15,14 +15,12 @@ header_mapping = {
     'Signature2': 'Signature2'
 }
 
-# data ==  array or dict
 
-
-def fill_excel_template(data, template_path):
+def fill_excel_template(data, template):
     wb = openpyxl.load_workbook(template)
-    sheet = wb.active
     event = data[0]['event']
     series = data[0]['series']
+    sheet = wb[series]
 
     for row_i, row_data in enumerate(data, start=8):
         for col_i, key in enumerate(row_data.keys(), start=1):
