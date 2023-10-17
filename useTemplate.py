@@ -1,7 +1,7 @@
 import openpyxl
-from csv_converter import getWCEntries
+from csv_converter import getWCEntries, csv_to_clean_keys
 
-template = '../signin_templates/driver_master.xlsx'
+template = './signin_templates/driver_master.xlsx'
 csv_file = './RA_entries.csv'
 
 # {'Driver Designation': 'Pro - Am', 'Team Name': 'RealTime', 'number': '43', 'event': 'Road America', 'series': 'GTWCA', 'driver2': 'Adam Christodoulou', 'driver1': 'Anthony Bartone'}
@@ -18,24 +18,26 @@ header_mapping = {
 
 def fill_excel_template(data, template):
     wb = openpyxl.load_workbook(template)
-    event = data[0]['event']
-    series = data[0]['series']
-    sheet = wb[series]
+    event = data['GTAM'][0]['event']
 
-    for row_i, row_data in enumerate(data, start=8):
-        for col_i, key in enumerate(row_data.keys(), start=1):
+    # Loop through each series key and go through entries to complete data
+    for _, entries in data.items():
+        sheet = wb[entries[0]['series']]
 
-            if key in header_mapping:
+        for row_i, entry in enumerate(entries, start=8):
+            for col_i, key in enumerate(entry.keys(), start=1):
 
-                mapped_header = header_mapping[key]
-                # Find the column index for the mapped header
-                for col in range(1, sheet.max_column + 1):
-                    if sheet.cell(row=7, column=col).value == mapped_header:
-                        col_i = col
-                        break
+                if key in header_mapping:
 
-                sheet.cell(row=row_i, column=col_i).value = row_data[key]
-    wb.save(f'./Driver_Sign_in/{series}_{event}.xlsx')
+                    mapped_header = header_mapping[key]
+                    # Find the column index for the mapped header
+                    for col in range(1, sheet.max_column + 1):
+                        if sheet.cell(row=7, column=col).value == mapped_header:
+                            col_i = col
+                            break
+
+                    sheet.cell(row=row_i, column=col_i).value = entry[key]
+    wb.save(f'./Driver_Sign_in/{event}.xlsx')
 
 
-fill_excel_template(getWCEntries(csv_file), template)
+fill_excel_template(csv_to_clean_keys(csv_file), template)
