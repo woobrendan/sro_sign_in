@@ -1,7 +1,6 @@
 import openpyxl
 from csv_to_series_entries import csv_to_series_entries
 
-template = './signin_templates/driver_master.xlsx'
 csv_file = './RA_entries.csv'
 
 # {'Driver Designation': 'Pro - Am', 'Team Name': 'RealTime', 'number': '43', 'event': 'Road America', 'series': 'GTWCA', 'driver2': 'Adam Christodoulou', 'driver1': 'Anthony Bartone'}
@@ -16,12 +15,12 @@ header_mapping = {
 }
 
 
-def fill_excel_template(data, template):
-    wb = openpyxl.load_workbook(template)
-    event = data['GTAM'][0]['event']
+def fill_drivers_signin(series_entries):
+    wb = openpyxl.load_workbook('./signin_templates/driver_master.xlsx')
+    event = series_entries['GTAM'][0]['event']
 
     # Loop through each series key and go through entries to complete data
-    for series, entries in data.items():
+    for series, entries in series_entries.items():
         sheet = wb[series]
 
         for row_i, entry in enumerate(entries, start=8):
@@ -40,4 +39,4 @@ def fill_excel_template(data, template):
     wb.save(f'./Driver_Sign_in/{event}.xlsx')
 
 
-fill_excel_template(csv_to_series_entries(csv_file), template)
+fill_drivers_signin(csv_to_series_entries(csv_file))
