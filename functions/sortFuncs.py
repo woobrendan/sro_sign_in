@@ -8,4 +8,7 @@ def sortBySeries(entry_arr):
         series_entries.append(entry)
         series[series_name] = series_entries
 
+    for key in series.keys():
+        series[key].sort(key=lambda x: x['number'])
+
     return series
