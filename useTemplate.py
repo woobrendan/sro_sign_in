@@ -1,5 +1,5 @@
 import openpyxl
-from csv_converter import getWCEntries, csv_to_clean_keys
+from csv_to_series_entries import csv_to_series_entries
 
 template = './signin_templates/driver_master.xlsx'
 csv_file = './RA_entries.csv'
@@ -21,8 +21,8 @@ def fill_excel_template(data, template):
     event = data['GTAM'][0]['event']
 
     # Loop through each series key and go through entries to complete data
-    for _, entries in data.items():
-        sheet = wb[entries[0]['series']]
+    for series, entries in data.items():
+        sheet = wb[series]
 
         for row_i, entry in enumerate(entries, start=8):
             for col_i, key in enumerate(entry.keys(), start=1):
@@ -40,4 +40,4 @@ def fill_excel_template(data, template):
     wb.save(f'./Driver_Sign_in/{event}.xlsx')
 
 
-fill_excel_template(csv_to_clean_keys(csv_file), template)
+fill_excel_template(csv_to_series_entries(csv_file), template)
