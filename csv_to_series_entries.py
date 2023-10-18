@@ -19,6 +19,13 @@ key_list = [
     'Event Selection'
 ]
 
+vehicle_types = ['GTWCA Car Make / Model',
+                 'GTA Car Make/Model',
+                 'GT4 Car Make/Model',
+                 'TCX Car Make / Model',
+                 'TC Car Make/Model',
+                 'TCA Car Make/Model']
+
 event_name = 'Road America'
 
 
@@ -75,11 +82,16 @@ def change_key_name(dict_arr, event):
             entry.pop('2nd Driver (First Name)')
             entry.pop('2nd Driver (Last Name)')
 
+        for key in vehicle_types:
+            if entry[key]:
+                entry['vehicle'] = entry[key]
+                break
+
     return dict_arr
 
 
 def csv_to_series_entries(csv_file, event):
     dict_arr = csv_to_dict_arr(csv_file, event)
-    cleaned = clean_results(dict_arr, key_list)
+    cleaned = clean_results(dict_arr, key_list.append(vehicle_types))
     changed_keys = change_key_name(cleaned, event)
     return sortBySeries(changed_keys)
