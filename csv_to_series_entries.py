@@ -48,7 +48,11 @@ def csv_to_dict_arr(csv_file_path, event):
 def clean_results(arr, key_arr):
     entries = []
     for entry in arr:
-        filtered = {key: entry[key] for key in key_arr if key in entry}
+        filtered = {}
+        for key in key_arr:
+            if key in entry and entry[key]:
+                filtered[key] = entry[key]
+
         entries.append(filtered)
     return entries
 
@@ -91,7 +95,11 @@ def change_key_name(dict_arr, event):
 
 
 def csv_to_series_entries(csv_file, event):
+    keys_list = key_list.copy()
+    keys_list.extend(vehicle_types)
+
     dict_arr = csv_to_dict_arr(csv_file, event)
-    cleaned = clean_results(dict_arr, key_list.append(vehicle_types))
+    cleaned = clean_results(dict_arr, keys_list)
     changed_keys = change_key_name(cleaned, event)
+
     return sortBySeries(changed_keys)
