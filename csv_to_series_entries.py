@@ -19,7 +19,7 @@ key_list = [
     'Event Selection'
 ]
 
-event = 'Road America'
+event_name = 'Road America'
 
 
 def csv_to_dict_arr(csv_file_path, event):
@@ -33,8 +33,6 @@ def csv_to_dict_arr(csv_file_path, event):
 
             if entry_dict['Event Selection'] in [event, 'FULL SEASON ENTRY']:
                 entries.append(entry_dict)
-
-        # print(entries)
     return entries
 
 # Only keep keys from key list, removing unused columns
@@ -54,11 +52,9 @@ def change_key_name(dict_arr, event):
         entry['event'] = event
         del entry['Event Selection']
 
-        if '\ufeffCar Class' in entry:
-            entry['Car Class'] = entry.pop('\ufeffCar Class')
-
-        if 'Registered Car #' in entry:
-            entry["number"] = entry.pop('Registered Car #')
+        # fix headers from csv to match needed output
+        entry['Car Class'] = entry.pop('\ufeffCar Class')
+        entry["number"] = entry.pop('Registered Car #')
 
         if entry['Car Class'] in ['TCX', 'TC', 'TCA']:
             entry['series'] = 'TCAM'
@@ -82,11 +78,8 @@ def change_key_name(dict_arr, event):
     return dict_arr
 
 
-def csv_to_series_entries(csv_file):
+def csv_to_series_entries(csv_file, event):
     dict_arr = csv_to_dict_arr(csv_file, event)
     cleaned = clean_results(dict_arr, key_list)
     changed_keys = change_key_name(cleaned, event)
     return sortBySeries(changed_keys)
-
-
-csv_to_series_entries(file_path)
