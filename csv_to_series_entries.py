@@ -2,7 +2,8 @@ import csv
 from functions.sortFuncs import sortBySeries
 from functions.helpers import getSeries
 
-file_path = "./RA_entries.csv"
+# file_path = "./RA_entries.csv"
+file_path = './entries_23.csv'
 
 key_list = [
     '\ufeffCar Class',
@@ -11,13 +12,17 @@ key_list = [
     'Team Name',
     'Driver Name (First Name)',
     'Driver Name (Last Name)',
+    # 'Nationality',
+    # 'FIA Driver Categorization'
     '2nd Driver (First Name)',
     '2nd Driver (Last Name)',
     'Event Selection'
 ]
 
+event = 'Road America'
 
-def csv_to_dict_arr(csv_file_path):
+
+def csv_to_dict_arr(csv_file_path, event):
 
     with open(csv_file_path, 'r', encoding='utf-8') as csv_file:
         csv_reader = csv.reader(csv_file)
@@ -25,7 +30,11 @@ def csv_to_dict_arr(csv_file_path):
         entries = []
         for row in csv_reader:
             entry_dict = dict(zip(headers, row))
-            entries.append(entry_dict)
+
+            if entry_dict['Event Selection'] in [event, 'FULL SEASON ENTRY']:
+                entries.append(entry_dict)
+
+        # print(entries)
     return entries
 
 # Only keep keys from key list, removing unused columns
@@ -39,16 +48,17 @@ def clean_results(arr, key_arr):
     return entries
 
 
-def change_key_name(dict_arr):
+def change_key_name(dict_arr, event):
     for entry in dict_arr:
+        # change full season or event name to event param
+        entry['event'] = event
+        del entry['Event Selection']
+
         if '\ufeffCar Class' in entry:
             entry['Car Class'] = entry.pop('\ufeffCar Class')
 
         if 'Registered Car #' in entry:
             entry["number"] = entry.pop('Registered Car #')
-
-        if 'Event Selection' in entry:
-            entry['event'] = entry.pop('Event Selection')
 
         if entry['Car Class'] in ['TCX', 'TC', 'TCA']:
             entry['series'] = 'TCAM'
@@ -73,7 +83,10 @@ def change_key_name(dict_arr):
 
 
 def csv_to_series_entries(csv_file):
-    dict_arr = csv_to_dict_arr(csv_file)
+    dict_arr = csv_to_dict_arr(csv_file, event)
     cleaned = clean_results(dict_arr, key_list)
-    changed_keys = change_key_name(cleaned)
+    changed_keys = change_key_name(cleaned, event)
     return sortBySeries(changed_keys)
+
+
+csv_to_series_entries(file_path)
