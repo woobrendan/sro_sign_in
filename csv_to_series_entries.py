@@ -82,13 +82,11 @@ def change_key_name(dict_arr, event):
             driver2 = f"{entry.pop('2nd Driver (First Name)', '')} {entry.pop('2nd Driver (Last Name)', '')}".strip(
             )
             entry['driver2'] = driver2
-        else:
-            entry.pop('2nd Driver (First Name)')
-            entry.pop('2nd Driver (Last Name)')
 
         for key in vehicle_types:
-            if entry[key]:
-                entry['vehicle'] = entry[key]
+            val = entry.get(key)
+            if val:
+                entry['vehicle'] = entry.pop(key)
                 break
 
     return dict_arr
