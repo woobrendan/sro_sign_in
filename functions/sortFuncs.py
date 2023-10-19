@@ -16,4 +16,15 @@ def sortBySeries(entry_arr):
     for series_name in series.keys():
         series[series_name].sort(key=sort_by_num)
 
-    return series   
+    return series
+
+
+def get_teams_carNums(entry_arr):
+    teams = {}
+    for entry in entry_arr:
+        team_name = entry['Team Name']
+        if teams[team_name]:
+            teams[team_name].append(entry['number'])
+        else:
+            teams[team_name] = [entry['number']]
+    return teams
