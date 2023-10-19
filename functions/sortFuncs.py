@@ -1,3 +1,6 @@
+import csv_to_series_entries
+
+
 def sort_by_num(entry):
     number = entry['number']
     return int(number.lstrip('#'))
@@ -23,8 +26,19 @@ def get_teams_carNums(entry_arr):
     teams = {}
     for entry in entry_arr:
         team_name = entry['Team Name']
-        if teams[team_name]:
+        team_val = entry.get(team_name)
+
+        if team_val:
             teams[team_name].append(entry['number'])
         else:
             teams[team_name] = [entry['number']]
     return teams
+
+
+if __name__ == "__main__":
+    csv_file = '../entries_23.csv'
+    event_name = 'Sonoma Raceway'
+    entries = csv_to_series_entries.csv_to_series_entries(csv_file, event_name)
+    gtam_entries = entries['GTAM']
+
+    print(get_teams_carNums(gtam_entries))
