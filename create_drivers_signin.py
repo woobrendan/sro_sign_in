@@ -1,7 +1,9 @@
 import openpyxl
 from csv_to_series_entries import csv_to_series_entries
 
-csv_file = './RA_entries.csv'
+# csv_file = './RA_entries.csv'
+csv_file = './entries_23.csv'
+event_name = 'Sonoma Raceway'
 
 # {'Driver Designation': 'Pro - Am', 'Team Name': 'RealTime', 'number': '43', 'event': 'Road America', 'series': 'GTWCA', 'driver2': 'Adam Christodoulou', 'driver1': 'Anthony Bartone'}
 
@@ -15,9 +17,8 @@ header_mapping = {
 }
 
 
-def create_drivers_signin(series_entries):
+def create_drivers_signin(series_entries, event):
     wb = openpyxl.load_workbook('./signin_templates/driver_master.xlsx')
-    event = series_entries['GTAM'][0]['event']
 
     # Loop through each series key and go through entries to complete data
     for series, entries in series_entries.items():
@@ -39,4 +40,4 @@ def create_drivers_signin(series_entries):
     wb.save(f'./Driver_Sign_in/{event}.xlsx')
 
 
-create_drivers_signin(csv_to_series_entries(csv_file))
+create_drivers_signin(csv_to_series_entries(csv_file, event_name), event_name)
