@@ -9,7 +9,7 @@ event_name = 'Sonoma Raceway'
 
 def output_csv(csv_file):
     entries = csv_to_series_entries(csv_file, event_name)
-    series_entries = entries['GTWCA']
+    series_entries = entries['TCAM']
     excel_file = 'output.xlsx'
 
     data = pd.DataFrame(series_entries)
