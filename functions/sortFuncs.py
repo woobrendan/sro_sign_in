@@ -26,12 +26,12 @@ def get_teams_carNums(entry_arr):
     teams = {}
     for entry in entry_arr:
         team_name = entry['Team Name']
-        team_val = entry.get(team_name)
+        num = entry['number']
 
-        if team_val:
-            teams[team_name].append(entry['number'])
+        if team_name in teams:
+            teams[team_name].append(num)
         else:
-            teams[team_name] = [entry['number']]
+            teams[team_name] = [num]
     return teams
 
 
