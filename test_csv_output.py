@@ -1,13 +1,13 @@
 import pandas as pd
 from csv_to_series_entries import csv_to_series_entries
 
-
+# Change Variables here
 csv_file = './entries_23.csv'
 event_name = 'Sonoma Raceway'
 
 
-def output_csv(csv_file):
-    entries = csv_to_series_entries(csv_file, event_name)
+def output_csv(csv_file, event):
+    entries = csv_to_series_entries(csv_file, event)
     all_entries = []
 
     for series_entries in entries.values():
@@ -20,4 +20,4 @@ def output_csv(csv_file):
 
 
 if __name__ == "__main__":
-    output_csv(csv_file)
+    output_csv(csv_file, event_name)
