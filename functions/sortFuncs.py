@@ -1,3 +1,8 @@
+def sort_by_num(entry):
+    number = entry['number']
+    return int(number.lstrip('#'))
+
+
 def sortBySeries(entry_arr):
     series = {}
     for entry in entry_arr:
@@ -8,7 +13,7 @@ def sortBySeries(entry_arr):
         series_entries.append(entry)
         series[series_name] = series_entries
 
-    for key in series.keys():
-        series[key].sort(key=lambda x: x['number'])
+    for series_name in series.keys():
+        series[series_name].sort(key=sort_by_num)
 
-    return series
+    return series   
