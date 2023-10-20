@@ -3,16 +3,19 @@ from csv_to_series_entries import csv_to_series_entries
 
 
 csv_file = './entries_23.csv'
-# csv_file = './RA_entries.csv'
 event_name = 'Sonoma Raceway'
 
 
 def output_csv(csv_file):
     entries = csv_to_series_entries(csv_file, event_name)
-    series_entries = entries['TCAM']
+    all_entries = []
+
+    for series_entries in entries.values():
+        all_entries.extend(series_entries)
+
     excel_file = 'output.xlsx'
 
-    data = pd.DataFrame(series_entries)
+    data = pd.DataFrame(all_entries)
     data.to_excel(excel_file, index=False)
 
 
