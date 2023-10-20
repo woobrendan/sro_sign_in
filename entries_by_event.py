@@ -5,8 +5,10 @@ from csv_to_series_entries import csv_to_series_entries
 csv_file = './entries_23.csv'
 event_name = 'Sonoma Raceway'
 
+# Pass in csv file of all entries, and filter by event, create excel file
 
-def output_csv(csv_file, event):
+
+def entries_by_event(csv_file, event):
     entries = csv_to_series_entries(csv_file, event)
     all_entries = []
 
@@ -20,4 +22,4 @@ def output_csv(csv_file, event):
 
 
 if __name__ == "__main__":
-    output_csv(csv_file, event_name)
+    entries_by_event(csv_file, event_name)
