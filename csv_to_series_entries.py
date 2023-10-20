@@ -92,12 +92,16 @@ def change_key_name(dict_arr, event):
     return dict_arr
 
 
-def csv_to_series_entries(csv_file, event):
+def csv_to_all_entries(csv_file, event):
     keys_list = key_list.copy()
     keys_list.extend(vehicle_types)
 
     dict_arr = csv_to_dict_arr(csv_file, event)
     cleaned = clean_results(dict_arr, keys_list)
-    changed_keys = change_key_name(cleaned, event)
+    return change_key_name(cleaned, event)
 
-    return sortBySeries(changed_keys)
+
+def csv_to_series_entries(csv_file, event):
+    all_entries = csv_to_all_entries(csv_file, event)
+
+    return sortBySeries(all_entries)
