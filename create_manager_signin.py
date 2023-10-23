@@ -23,4 +23,7 @@ def create_manager_signin(series_entries, event):
 
             current_row += 1
 
-    wb.save(f'manager__signin/{event}.xlsx')
+    wb.save(f'manager_signin/{event}.xlsx')
+
+
+create_manager_signin(csv_to_series_entries(csv_file, event_name), event_name)
