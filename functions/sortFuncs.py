@@ -23,6 +23,7 @@ def sortBySeries(entry_arr):
 
 
 # 'Flying Lizard Motorsports': ['2', '8', '460'], 'Crowdstrike by Riley': ['04'], 'Blackdog Speed Shop': ['5'], 'DXDT Racing': ['08', '91']...}
+# returns an array of tuples, ('Auto Technic Racing', ['51', '253'])
 def get_teams_carNums(entry_arr):
     teams = {}
     for entry in entry_arr:
@@ -37,7 +38,10 @@ def get_teams_carNums(entry_arr):
     for team in teams.keys():
         unique_entries = list(set(teams[team]))
         teams[team] = sorted(unique_entries, key=lambda x: int(x.lstrip('#')))
-    return teams
+
+    sorted_teams = sorted(teams.items())
+
+    return sorted_teams
 
 
 if __name__ == "__main__":
