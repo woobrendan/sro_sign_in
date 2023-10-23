@@ -1,5 +1,3 @@
-import csv_to_series_entries
-
 
 def sort_by_num(entry):
     number = entry['number']
@@ -42,12 +40,3 @@ def get_teams_carNums(entry_arr):
     sorted_teams = sorted(teams.items())
 
     return sorted_teams
-
-
-if __name__ == "__main__":
-    csv_file = '../entries_23.csv'
-    event_name = 'Sonoma Raceway'
-    entries = csv_to_series_entries.csv_to_series_entries(csv_file, event_name)
-    gtam_entries = entries['GTAM']
-
-    print(get_teams_carNums(gtam_entries))
