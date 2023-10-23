@@ -12,14 +12,14 @@ def create_manager_signin(series_entries, event):
     for series, entries in series_entries.items():
         sheet = wb[series]
 
-        team_car_dict = get_teams_carNums(entries)
+        team_car_arr = get_teams_carNums(entries)
 
         current_row = 8
 
-        for team, car_nums in team_car_dict.items():
-            sheet.cell(row=current_row, column=1, value=team)
+        for team in team_car_arr:
+            sheet.cell(row=current_row, column=1, value=team[0])
 
-            sheet.cell(row=current_row, column=2, value=', '.join(car_nums))
+            sheet.cell(row=current_row, column=2, value=', '.join(team[1]))
 
             current_row += 1
 
