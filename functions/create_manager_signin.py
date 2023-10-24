@@ -1,5 +1,5 @@
 import openpyxl
-from csv_to_series_entries import csv_to_series_entries
+from functions.csv_to_series_entries import csv_to_series_entries
 from functions.sortFuncs import get_teams_carNums
 
 csv_file = './entries_23.csv'
