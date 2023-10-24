@@ -1,4 +1,6 @@
-from functions import create_drivers_signin, create_manager_signin, csv_to_series_entries
+from functions.csv_to_series_entries import csv_to_series_entries
+from functions.create_drivers_signin import create_drivers_signin
+from functions.create_manager_signin import create_manager_signin
 
 # Change variables accordingly
 entries_csv = './entries_23.csv'
