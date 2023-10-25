@@ -1,5 +1,5 @@
 import openpyxl
-from functions.csv_to_series_entries import csv_to_series_entries
+from functions.utility import get_all_teams
 from functions.sortFuncs import get_teams_carNums
 
 
@@ -19,5 +19,16 @@ def create_manager_signin(series_entries, event):
             sheet.cell(row=current_row, column=2, value=', '.join(team[1]))
 
             current_row += 1
+
+    sheet['Event_log']
+
+    all_entries = get_all_teams(series_entries)
+
+    current = 8
+
+    for team_name in all_entries:
+        sheet.cell(row=current, column=1, value=team_name)
+
+        current += 1
 
     wb.save(f'manager_signin/{event}.xlsx')
