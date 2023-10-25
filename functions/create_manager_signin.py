@@ -4,7 +4,7 @@ from functions.sortFuncs import get_teams_carNums
 
 
 def create_manager_signin(series_entries, event):
-    wb = openpyxl.load_workbook('./signin_templates/manager_signin.xlsx')
+    wb = openpyxl.load_workbook('./templates/manager_signin.xlsx')
 
     for series, entries in series_entries.items():
         sheet = wb[series]
