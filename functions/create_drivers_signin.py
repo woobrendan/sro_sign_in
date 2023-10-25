@@ -14,7 +14,7 @@ header_mapping = {
 
 
 def create_drivers_signin(series_entries, event):
-    wb = openpyxl.load_workbook('./signin_templates/driver_master.xlsx')
+    wb = openpyxl.load_workbook('./templates/driver_master.xlsx')
 
     # Loop through each series key and go through entries to complete data
     for series, entries in series_entries.items():
