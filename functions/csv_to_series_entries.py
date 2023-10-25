@@ -2,9 +2,6 @@ import csv
 from functions.sortFuncs import sortBySeries
 from functions.utility import getSeries
 
-# file_path = "./RA_entries.csv"
-file_path = './entries_23.csv'
-
 key_list = [
     '\ufeffCar Class',
     'Driver Designation',
@@ -25,8 +22,6 @@ vehicle_types = ['GTWCA Car Make / Model',
                  'TCX Car Make / Model',
                  'TC Car Make/Model',
                  'TCA Car Make/Model']
-
-event_name = 'Road America'
 
 
 def csv_to_dict_arr(csv_file_path, event):
