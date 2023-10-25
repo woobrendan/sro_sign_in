@@ -1,10 +1,6 @@
 import openpyxl
 from functions.csv_to_series_entries import csv_to_series_entries
 
-# csv_file = './RA_entries.csv'
-csv_file = '../entries_23.csv'
-event_name = 'Sonoma Raceway'
-
 # {'Driver Designation': 'Pro - Am', 'Team Name': 'RealTime', 'number': '43', 'event': 'Road America', 'series': 'GTWCA', 'driver2': 'Adam Christodoulou', 'driver1': 'Anthony Bartone'}
 
 header_mapping = {
@@ -38,6 +34,3 @@ def create_drivers_signin(series_entries, event):
 
                     sheet.cell(row=row_i, column=col_i).value = entry[key]
     wb.save(f'./Driver_Sign_in/{event}.xlsx')
-
-
-create_drivers_signin(csv_to_series_entries(csv_file, event_name), event_name)
