@@ -20,7 +20,8 @@ def create_manager_signin(series_entries, event):
 
             current_row += 1
 
-    sheet['Event_log']
+    # handle event logistics
+    sheet = wb['Event_log']
 
     all_entries = get_all_teams(series_entries)
 
