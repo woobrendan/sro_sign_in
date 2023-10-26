@@ -2,6 +2,7 @@ import csv
 from functions.sortFuncs import sortBySeries
 from functions.utility import getSeries
 
+sponsor_str = 'Team Sponsors - Please seperate each Sponsor with a comma'
 key_list = [
     '\ufeffCar Class',
     'Driver Designation',
@@ -9,8 +10,9 @@ key_list = [
     'Team Name',
     'Driver Name (First Name)',
     'Driver Name (Last Name)',
-    # 'Nationality',
-    # 'FIA Driver Categorization'
+    'Nationality',
+    # 'FIA Driver Categorization',
+    sponsor_str,
     '2nd Driver (First Name)',
     '2nd Driver (Last Name)',
     'Event Selection'
@@ -61,6 +63,8 @@ def change_key_name(dict_arr, event):
         # fix headers from csv to match needed output
         entry['Car Class'] = entry.pop('\ufeffCar Class')
         entry["number"] = entry.pop('Registered Car #')
+        entry['NAT'] = entry.pop('Nationality')
+        entry['sponsors'] = entry.pop(sponsor_str)
 
         if entry['Car Class'] in ['TCX', 'TC', 'TCA']:
             entry['series'] = 'TCAM'
