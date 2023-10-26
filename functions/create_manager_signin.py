@@ -1,5 +1,5 @@
 import openpyxl
-from functions.utility import get_all_teams
+from functions.utility import event_log
 from functions.sortFuncs import get_teams_carNums
 
 
@@ -20,16 +20,7 @@ def create_manager_signin(series_entries, event):
 
             current_row += 1
 
-    # handle event logistics
-    sheet = wb['Event_log']
-
-    all_entries = get_all_teams(series_entries)
-
-    current = 8
-
-    for team_name in all_entries:
-        sheet.cell(row=current, column=1, value=team_name)
-
-        current += 1
+    # handle event logistics page
+    event_log(wb, series_entries)
 
     wb.save(f'manager_signin/{event}.xlsx')
