@@ -6,6 +6,18 @@ def getSeries(series_name):
     }
     return series[series_name]
 
+
+def series_long_name(series_name):
+    series = {
+        'GTWCA': 'FGTWCA',
+        'PGT4A': 'GT4 America',
+        'TCAM': 'TC America',
+        'GTAM': 'GT America',
+        'GRC': 'GR Cup'
+    }
+
+    return series[series_name]
+
 # take in series_entries {'gtwca': [{entry}]} and return combined list of all entries removed duplicates
 
 
