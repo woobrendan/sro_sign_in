@@ -62,7 +62,7 @@ def change_key_name(dict_arr, event):
 
         # fix headers from csv to match needed output
         entry['Car Class'] = entry.pop('\ufeffCar Class')
-        entry["number"] = entry.pop('Registered Car #')
+        entry["number"] = entry.pop('Registered Car #').replace("#", '')
         entry['NAT'] = entry.get('Nationality', '')
         entry['sponsors'] = entry.pop(sponsor_str)
         entry['Team Name'] = entry['Team Name'].strip()
