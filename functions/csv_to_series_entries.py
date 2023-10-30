@@ -63,9 +63,10 @@ def change_key_name(dict_arr, event):
         # fix headers from csv to match needed output
         entry['Car Class'] = entry.pop('\ufeffCar Class')
         entry["number"] = entry.pop('Registered Car #').replace("#", '')
-        entry['NAT'] = entry.get('Nationality', '')
         entry['sponsors'] = entry.pop(sponsor_str)
         entry['Team Name'] = entry['Team Name'].strip()
+        entry['NAT'] = entry.get('Nationality', '')
+        del entry['Nationality']
 
         # add class value for TCAM, change series away from tcx to tcam
         if entry['Car Class'] in ['TCX', 'TC', 'TCA']:
@@ -75,7 +76,7 @@ def change_key_name(dict_arr, event):
             entry['series'] = getSeries(entry['Car Class'])
             del entry['Car Class']
 
-        driver1 = f"{entry.pop('Driver Name (First Name)', '')} {entry.pop('Driver Name (Last Name)', '')}".strip(
+        driver1 = f"{entry.pop('Driver Name (First Name)')} {entry.pop('Driver Name (Last Name)')}".strip(
         )
         entry['driver1'] = driver1
         entry['classif'] = entry.pop('Driver Designation')
@@ -83,9 +84,9 @@ def change_key_name(dict_arr, event):
         isSecondDriver = entry.get('2nd Driver (First Name)')
 
         if isSecondDriver:
-            driver2 = f"{entry.pop('2nd Driver (First Name)', '')} {entry.pop('2nd Driver (Last Name)', '')}".strip(
+            driver2_str = f"{entry.pop('2nd Driver (First Name)')} {entry.pop('2nd Driver (Last Name)')}".strip(
             )
-            entry['driver2'] = driver2
+            entry['driver2'] = driver2_str
 
         for key in vehicle_types:
             val = entry.get(key)
