@@ -40,3 +40,18 @@ def get_teams_carNums(entry_arr):
     sorted_teams = sorted(teams.items())
 
     return sorted_teams
+
+
+def sortGTAEntries(entry_arr):
+    entries = {}
+
+    for entry in entry_arr:
+        classif = entry['classif']
+        if entries[classif]:
+            entries[classif].append(entry)
+        else:
+            entries[classif] = [entry]
+
+    ordered = entries['GT3'] + entries['GT2'] + entries['GT4']
+
+    return ordered
