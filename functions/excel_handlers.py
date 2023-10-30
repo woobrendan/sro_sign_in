@@ -40,13 +40,16 @@ def handle_single_driver(wb, entries):
     sheet['D4'] = date_str
 
     for entry in entries:
+
+        entry['classif'] = 'SRO3' if series == 'GTAM' and entry['classif'] == 'GT3' else entry['classif']
+
         sheet.cell(row=current, column=1, value=series_name)
         sheet.cell(row=current, column=2, value=entry['number'])
         sheet.cell(row=current, column=3, value=entry['Team Name'])
         sheet.cell(row=current, column=4, value=entry['driver1'])
         sheet.cell(row=current, column=5, value=entry['NAT'])
-        sheet.cell(row=current, column=6, value=entry['sponsors'])
-        sheet.cell(row=current, column=7, value=entry['vehicle'])
-        sheet.cell(row=current, column=8, value=entry['classif'])
+        sheet.cell(row=current, column=8, value=entry['sponsors'])
+        sheet.cell(row=current, column=9, value=entry['vehicle'])
+        sheet.cell(row=current, column=10, value=entry['classif'])
 
-    current += 1
+        current += 1
