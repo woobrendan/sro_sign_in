@@ -66,7 +66,6 @@ def change_key_name(dict_arr, event):
         entry['sponsors'] = entry.pop(sponsor_str)
         entry['Team Name'] = entry['Team Name'].strip()
         entry['NAT'] = entry.get('Nationality', '')
-        del entry['Nationality']
 
         # add class value for TCAM, change series away from tcx to tcam
         if entry['Car Class'] in ['TCX', 'TC', 'TCA']:
