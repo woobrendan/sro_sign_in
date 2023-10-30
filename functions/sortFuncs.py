@@ -47,11 +47,17 @@ def sortGTAEntries(entry_arr):
 
     for entry in entry_arr:
         classif = entry['classif']
-        if entries[classif]:
+        exists = entries.get(classif)
+
+        if exists:
             entries[classif].append(entry)
         else:
             entries[classif] = [entry]
 
-    ordered = entries['GT3'] + entries['GT2'] + entries['GT4']
+    ordered = []
+    for car_class in ['GT3', 'GT2', 'GT4']:
+        entry_arr = entries.get(car_class)
+        if entry_arr:
+            ordered += entry_arr
 
     return ordered
