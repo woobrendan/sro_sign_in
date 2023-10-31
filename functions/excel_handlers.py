@@ -1,4 +1,5 @@
 from .utility import get_all_teams, series_long_name
+from .sortFuncs import sortGTAEntries
 
 
 def event_log(wb, series_entries):
@@ -28,12 +29,13 @@ def handle_single_driver(wb, entries):
     series_name = series_long_name(first_entry['series'])
 
     sheet = wb[series]
-
     current = 7
+
+    if series == 'GTAM':
+        entries = sortGTAEntries(entries)
 
     # Entry list title, event name and date
     event_name = first_entry['event']
-
     # Change date value accordingly
     date_str = 'April 5 - 7'
     sheet['D2'] = event_name
