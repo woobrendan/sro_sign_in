@@ -42,7 +42,8 @@ def get_teams_carNums(entry_arr):
     return sorted_teams
 
 
-def sortGTAEntries(entry_arr):
+# Take in sort array of classes to sort by desired class
+def sortEntriesByClass(entry_arr, sort_arr):
     entries = {}
 
     for entry in entry_arr:
@@ -55,7 +56,7 @@ def sortGTAEntries(entry_arr):
             entries[classif] = [entry]
 
     ordered = []
-    for car_class in ['GT3', 'GT2', 'GT4']:
+    for car_class in sort_arr:
         entry_arr = entries.get(car_class)
         if entry_arr:
             ordered += entry_arr
