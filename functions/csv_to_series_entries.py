@@ -97,11 +97,11 @@ def change_key_name(dict_arr, event):
 
 
 def csv_to_all_entries(csv_file, event):
-    keys_list = key_list.copy()
-    keys_list.extend(vehicle_types)
+    all_keys_list = key_list.copy()
+    all_keys_list.extend(vehicle_types)
 
     dict_arr = csv_to_dict_arr(csv_file, event)
-    cleaned = clean_results(dict_arr, keys_list)
+    cleaned = clean_results(dict_arr, all_keys_list)
     return change_key_name(cleaned, event)
 
 
