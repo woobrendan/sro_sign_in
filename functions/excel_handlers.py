@@ -31,8 +31,11 @@ def handle_single_driver(wb, entries):
     sheet = wb[series]
     current = 7
 
+    sort_arr = ['GT3', 'GT2', 'GT4'] if series == 'GTAM' else [
+        'TCX', 'TC', 'TCA']
+
     if series == 'GTAM':
-        entries = sortEntriesByClass(entries, ['GT3', 'GT2', 'GT4'])
+        entries = sortEntriesByClass(entries, sort_arr)
 
     # Entry list title, event name and date
     event_name = first_entry['event']
