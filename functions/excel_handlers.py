@@ -1,5 +1,5 @@
 from .utility import get_all_teams, series_long_name
-from .sortFuncs import sortGTAEntries
+from .sortFuncs import sortEntriesByClass
 
 
 def event_log(wb, series_entries):
@@ -32,7 +32,7 @@ def handle_single_driver(wb, entries):
     current = 7
 
     if series == 'GTAM':
-        entries = sortGTAEntries(entries)
+        entries = sortEntriesByClass(entries, ['GT3', 'GT2', 'GT4'])
 
     # Entry list title, event name and date
     event_name = first_entry['event']
