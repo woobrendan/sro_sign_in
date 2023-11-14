@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
+from format_entry_list.sortByEvent import sortByEvent
 import requests
 import os
-import json
 
 load_dotenv()
 
@@ -25,10 +25,12 @@ def fetch_entries():
         if response.status_code == 200:
             data = response.json()
 
-            print(json.dumps(data, indent=4))
+            return data['data']
+
     except requests.exceptions.RequestException:
         print(f'HTTP Request failed error {response.status_code}')
 
 
 if __name__ == '__main__':
-    fetch_entries()
+    entries = fetch_entries()
+    sortByEvent(entries)
