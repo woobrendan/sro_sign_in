@@ -1,7 +1,7 @@
 sro_events = [
     'FULL SEASON ENTRY',
     'Sonoma Raceway',
-    'Long Beack Grand Prix',
+    'Long Beach Grand Prix',
     'Sebring International Raceway',
     'Circuit of the Americas',
     'Virginia International Raceway',
