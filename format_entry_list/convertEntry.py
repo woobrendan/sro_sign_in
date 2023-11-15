@@ -11,8 +11,13 @@ def convertEntry(entry):
 
             if label == 'Championship / Class' and field["path"] == 'carType.tca':
                 new_entry[label] = field["label"]
+                break
 
             if field["label"] == label:
+                if label == "Team Sponsors - Please seperate each Sponsor with a comma":
+                    new_entry["sponsors"] = field["value"]
+                    break
+
                 new_entry[label] = field["value"]
 
     return new_entry
