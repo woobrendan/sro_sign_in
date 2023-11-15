@@ -14,6 +14,15 @@ def convertEntry(entry):
     return new_entry
 
 
+def convertSeries(series):
+    series_list = {
+        'gtsSprintx': "GT4 America",
+        'gtSportsClub': "GT America",
+        "sprintX": "GT World Challenge America"
+    }
+
+    return series_list.get(series, 'Series  Error')
+
 # USAC APP
 # {
 #    fields: {
