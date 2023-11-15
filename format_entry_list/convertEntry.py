@@ -21,7 +21,21 @@ def convertSeries(series):
         "sprintX": "GT World Challenge America"
     }
 
-    return series_list.get(series, 'Series  Error')
+    return series_list.get(series, f'Series Error {series}')
+
+
+def convertClassif(classif):
+    class_list = {
+        "sro3": "SRO3",
+        'gt4': "GT4",
+        'gt2': 'GT2',
+        'proAm': "Pro-Am",
+        'proPro': "Pro",
+        'am': 'Am',
+        'silver': 'Silver'
+    }
+
+    return class_list.get(classif, f'classification error {classif}')
 
 # USAC APP
 # {
