@@ -1,4 +1,5 @@
 from format_entry_list.labels import labels
+import json
 
 
 # Take in entry object from and convert into format usable for entry list and USAC app
@@ -6,7 +7,11 @@ def convertEntry(entry):
     new_entry = {}
 
     for label in labels:
-        pass
+        for field in entry["fieldData"]:
+            if field["label"] == label:
+                new_entry[label] = field["value"]
+
+    return new_entry
 
 
 # USAC APP
