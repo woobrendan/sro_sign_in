@@ -8,6 +8,10 @@ def convertEntry(entry):
 
     for label in labels:
         for field in entry["fieldData"]:
+
+            if label == 'Championship / Class' and field["path"] == 'carType.tca':
+                new_entry[label] = field["label"]
+
             if field["label"] == label:
                 new_entry[label] = field["value"]
 
@@ -18,7 +22,8 @@ def convertSeries(series):
     series_list = {
         'gtsSprintx': "GT4 America",
         'gtSportsClub': "GT America",
-        "sprintX": "GT World Challenge America"
+        "sprintX": "GT World Challenge America",
+        "tc": "TC America"
     }
 
     return series_list.get(series, f'Series Error {series}')
@@ -32,7 +37,10 @@ def convertClassif(classif):
         'proAm': "Pro-Am",
         'proPro': "Pro",
         'am': 'Am',
-        'silver': 'Silver'
+        'silver': 'Silver',
+        'TCX': 'TCX',
+        'TC': 'TC',
+        'TCA': 'TCA'
     }
 
     return class_list.get(classif, f'classification error {classif}')
