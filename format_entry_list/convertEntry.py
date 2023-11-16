@@ -1,5 +1,5 @@
 from format_entry_list.labels import labels
-import json
+import copy
 
 
 def convertSeries(series):
@@ -34,7 +34,24 @@ def getFieldPathVal(field):
     return field["path"].split('.')[1]
 
 
+def getDriverName(driver, field, entry):
+    name = getFieldPathVal(field)
+    name_arr = name.split(' ')
+
+    copy_entry = copy.deepcopy(entry)
+
+    if len(name_arr) == 3:
+        copy_entry[f"{driver}firstName"] = f'{name_arr[0]} {name_arr[1]}'
+        copy_entry[f"{driver}lastName"] = name_arr[2]
+    else:
+        copy_entry[f"{driver}firstName"] = name_arr[0]
+        copy_entry[f"{driver}lastName"] = name_arr[1]
+
+    return copy_entry
+
 # Take in entry object from and convert into format usable for entry list and USAC app
+
+
 def convertEntry(entry):
     new_entry = {}
 
@@ -50,14 +67,7 @@ def convertEntry(entry):
                 break
 
             if label == 'driver1Name' and 'primaryDriverName.' in field["path"]:
-                name = getFieldPathVal(field)
-                name_arr = name.split(' ')
-                if len(name_arr) == 3:
-                    new_entry["driver1firstName"] = f'{name_arr[0]} {name_arr[1]}'
-                    new_entry["driver1lastName"] = name_arr[2]
-                else:
-                    new_entry["driver1firstName"] = name_arr[0]
-                    new_entry["driver1lastName"] = name_arr[1]
+                new_entry = getDriverName('driver1', field, new_entry)
                 break
 
             if field["label"] == label:
