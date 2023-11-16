@@ -16,13 +16,8 @@ def sortByEvent(all_entries):
 
         new_entry = convertEntry(entry)
 
-        new_entry['Car Series'] = convertSeries(new_entry['Car Series'])
-        new_entry["Championship / Class"] = convertClassif(
-            new_entry.get("Championship / Class"))
         print('new----', json.dumps(new_entry, indent=4))
 
         entry_event_dict[event_name].append(entry)
-
-    print(json.dumps(entry_event_dict, indent=4))
 
     return entry_event_dict
