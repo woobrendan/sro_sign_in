@@ -2,6 +2,17 @@ from format_entry_list.labels import labels
 import json
 
 
+def convertSeries(series):
+    series_list = {
+        'gtsSprintx': "GT4 America",
+        'gtSportsClub': "GT America",
+        "sprintX": "GT World Challenge America",
+        "tc": "TC America"
+    }
+
+    return series_list.get(series, f'Series Error {series}')
+
+
 # Take in entry object from and convert into format usable for entry list and USAC app
 def convertEntry(entry):
     new_entry = {}
@@ -18,20 +29,14 @@ def convertEntry(entry):
                     new_entry["sponsors"] = field["value"]
                     break
 
+                if label == 'Car Series':
+                    print('field', field)
+                    new_entry["series"] = convertSeries(field["value"])
+                    break
+
                 new_entry[label] = field["value"]
 
     return new_entry
-
-
-def convertSeries(series):
-    series_list = {
-        'gtsSprintx': "GT4 America",
-        'gtSportsClub': "GT America",
-        "sprintX": "GT World Challenge America",
-        "tc": "TC America"
-    }
-
-    return series_list.get(series, f'Series Error {series}')
 
 
 def convertClassif(classif):
