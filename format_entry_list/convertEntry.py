@@ -30,6 +30,10 @@ def convertClassif(classif):
     return class_list.get(classif, f'classification error {classif}')
 
 
+def getFieldPathVal(field):
+    return field["path"].split('.')[1]
+
+
 # Take in entry object from and convert into format usable for entry list and USAC app
 def convertEntry(entry):
     new_entry = {}
@@ -42,7 +46,18 @@ def convertEntry(entry):
                 break
 
             if label == 'team' and 'temName.' in field["path"]:
-                new_entry[label] = field["path"].split('.')[1]
+                new_entry[label] = getFieldPathVal(field)
+                break
+
+            if label == 'driver1Name' and 'primaryDriverName.' in field["path"]:
+                name = getFieldPathVal(field)
+                name_arr = name.split(' ')
+                if len(name_arr) == 3:
+                    new_entry["driver1firstName"] = f'{name_arr[0]} {name_arr[1]}'
+                    new_entry["driver1lastName"] = name_arr[2]
+                else:
+                    new_entry["driver1firstName"] = name_arr[0]
+                    new_entry["driver1lastName"] = name_arr[1]
                 break
 
             if field["label"] == label:
