@@ -1,4 +1,4 @@
-from format_entry_list.labels import labels
+from format_entry_list.labels import labels, car_types
 import copy
 
 
@@ -66,9 +66,16 @@ def convertEntry(entry):
                 new_entry[label] = getFieldPathVal(field)
                 break
 
-            if label == 'driver1Name' and 'primaryDriverName.' in field["path"]:
-                new_entry = getDriverName('driver1', field, new_entry)
+            if label == 'driver1' and 'primaryDriverName.' in field["path"]:
+                new_entry = getDriverName(label, field, new_entry)
                 break
+
+            if label == 'driver2' and '2ndDriverName2.' in field["path"]:
+                new_entry = getDriverName(label, field, new_entry)
+                break
+
+            if field["label"] in car_types:
+                new_entry['car'] = field["value"]
 
             if field["label"] == label:
                 if label == 'Championship / Class':
