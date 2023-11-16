@@ -13,32 +13,6 @@ def convertSeries(series):
     return series_list.get(series, f'Series Error {series}')
 
 
-# Take in entry object from and convert into format usable for entry list and USAC app
-def convertEntry(entry):
-    new_entry = {}
-
-    for label in labels:
-        for field in entry["fieldData"]:
-
-            if label == 'Championship / Class' and field["path"] == 'carType.tca':
-                new_entry[label] = field["label"]
-                break
-
-            if field["label"] == label:
-                if label == "Team Sponsors - Please seperate each Sponsor with a comma":
-                    new_entry["sponsors"] = field["value"]
-                    break
-
-                if label == 'Car Series':
-                    print('field', field)
-                    new_entry["series"] = convertSeries(field["value"])
-                    break
-
-                new_entry[label] = field["value"]
-
-    return new_entry
-
-
 def convertClassif(classif):
     class_list = {
         "sro3": "SRO3",
@@ -54,6 +28,36 @@ def convertClassif(classif):
     }
 
     return class_list.get(classif, f'classification error {classif}')
+
+
+# Take in entry object from and convert into format usable for entry list and USAC app
+def convertEntry(entry):
+    new_entry = {}
+
+    for label in labels:
+        for field in entry["fieldData"]:
+
+            if label == 'Championship / Class':
+                if field["path"] == 'carType.tca':
+                    new_entry['class'] = convertClassif(field["label"])
+                    break
+                if label == field["label"]:
+                    new_entry['class'] = convertClassif(field["value"])
+                    break
+
+            if field["label"] == label:
+                if label == "Team Sponsors - Please seperate each Sponsor with a comma":
+                    new_entry["sponsors"] = field["value"]
+                    break
+
+                if label == 'Car Series':
+                    new_entry["series"] = convertSeries(field["value"])
+                    break
+
+                new_entry[label] = field["value"]
+
+    return new_entry
+
 
 # USAC APP
 # {
