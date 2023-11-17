@@ -1,5 +1,7 @@
+from posixpath import split
 from format_entry_list.labels import labels, car_types
 import copy
+import re
 
 
 def convertSeries(series):
@@ -32,6 +34,20 @@ def convertClassif(classif):
 
 def getFieldPathVal(field):
     return field["path"].split('.')[1]
+
+
+def getManuf(vehicle):
+    # Use a regular expression to find the positions of capital letters
+    capital_positions = [m.start() for m in re.finditer(r'[A-Z]', vehicle)]
+
+    # Split the string using the identified positions
+    parts = [vehicle[i:j]
+             for i, j in zip([0] + capital_positions, capital_positions + [None])]
+
+    # Remove empty strings from the list
+    parts = [part for part in parts if part]
+
+    return parts[0].capitalize()
 
 
 def getDriverName(driver, field, entry):
@@ -79,7 +95,9 @@ def convertEntry(entry):
                 break
 
             if label == 'car' and field["label"] in car_types:
-                new_entry['car'] = field["value"]
+                car = field['value']
+                new_entry['car'] = car
+                new_entry['manufacturer'] = getManuf(car)
 
             if field["label"] == label:
                 if label == 'Championship / Class':
