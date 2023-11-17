@@ -73,6 +73,11 @@ def convertEntry(entry):
                 new_entry[label] = getFieldPathVal(field)
                 break
 
+            if (label == 'driver1category' and 'fiaDriverCategorization.' in field['path']) or \
+                    (label == 'driver2category' and 'fiaDriverCategorization2.' in field['path']):
+                new_entry[label] = field["label"]
+                break
+
             if label == 'car' and field["label"] in car_types:
                 new_entry['car'] = field["value"]
 
