@@ -62,27 +62,18 @@ def convertEntry(entry):
                 new_entry['class'] = convertClassif(field["label"])
                 break
 
-            if label == 'team' and 'temName.' in field["path"]:
-                new_entry[label] = getFieldPathVal(field)
-                break
-
-            if label == 'driver1' and 'primaryDriverName.' in field["path"]:
+            if (label == 'driver1' and 'primaryDriverName.' in field["path"]) or \
+                    (label == 'driver2' and '2ndDriverName2.' in field["path"]):
                 new_entry = getDriverName(label, field, new_entry)
                 break
 
-            if label == 'driver1nationality' and 'nationality2.' in field["path"]:
+            if (label == 'driver1nationality' and 'nationality2.' in field["path"]) or \
+                (label == 'driver2nationality' and 'nationality32.' in field["path"]) or \
+                    (label == 'team' and 'temName.' in field["path"]):
                 new_entry[label] = getFieldPathVal(field)
                 break
 
-            if label == 'driver2' and '2ndDriverName2.' in field["path"]:
-                new_entry = getDriverName(label, field, new_entry)
-                break
-
-            if label == 'driver2nationality' and 'nationality32.' in field["path"]:
-                new_entry[label] = getFieldPathVal(field)
-                break
-
-            if field["label"] in car_types:
+            if label == 'car' and field["label"] in car_types:
                 new_entry['car'] = field["value"]
 
             if field["label"] == label:
@@ -101,8 +92,6 @@ def convertEntry(entry):
                 if label == "Registered Car #":
                     new_entry['number'] = field["value"]
                     break
-
-                new_entry[label] = field["value"]
 
     return new_entry
 
