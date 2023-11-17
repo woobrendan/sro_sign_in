@@ -58,7 +58,7 @@ def convertEntry(entry):
     for label in labels:
         for field in entry["fieldData"]:
 
-            if label == 'Championship / Class' and field["path"] == 'carType.tca':
+            if label == 'Championship / Class' and 'carType.' in field["path"]:
                 new_entry['class'] = convertClassif(field["label"])
                 break
 
@@ -70,8 +70,16 @@ def convertEntry(entry):
                 new_entry = getDriverName(label, field, new_entry)
                 break
 
+            if label == 'driver1nationality' and 'nationality2.' in field["path"]:
+                new_entry[label] = getFieldPathVal(field)
+                break
+
             if label == 'driver2' and '2ndDriverName2.' in field["path"]:
                 new_entry = getDriverName(label, field, new_entry)
+                break
+
+            if label == 'driver2nationality' and 'nationality32.' in field["path"]:
+                new_entry[label] = getFieldPathVal(field)
                 break
 
             if field["label"] in car_types:
