@@ -4,7 +4,7 @@ labels = [
     'Registered Car #',
     'team',
     'driver1',
-    'driver1category'
+    'driver1category',
     'driver1nationality',
     'driver2',
     'driver2category',
