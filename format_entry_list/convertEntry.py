@@ -65,9 +65,8 @@ def getDriverName(driver, field, entry):
 
     return copy_entry
 
+
 # Take in entry object from and convert into format usable for entry list and USAC app
-
-
 def convertEntry(entry):
     new_entry = {}
 
@@ -126,23 +125,23 @@ def convertEntry(entry):
 #        driver1category: "Bronze",
 #        driver1firstName: "Robert",
 #        driver1nationality: "USA",
-#        racelinkNumber: "219311",
-#        driver1drivesFirst: true,
+#        racelinkNumber: "219311",  --
+#        driver1drivesFirst: true, --
 #        team: "STR38 Motorsports",
 #        driver1lastName: "Mau",
-#        transponderNumber: "14974222",
+#        transponderNumber: "14974222", --
 #        driver2firstName: "Chris",
 #        driver2lastName: "Allen",
-#        isTeam: true,
+#        isTeam: true, --
 #        manufacturer: "BMW",
-#        driver1licenseNationality: "USA",
+#        driver1licenseNationality: "USA", --
 #        number: "438",
-#        driver2driverId: 2,
-#        driver1driverId: 1,
+#        driver2driverId: 2, --
+#        driver1driverId: 1, --
 #        car: "BMW M4 GT4 (G82)",
 #        sponsors: "Cannonball Storage, OVN, Sim Seats",
 #        series: "GT4 America",
-#        driver2licenseNationality: "USA",
+#        driver2licenseNationality: "USA", --
 #        class: "Am",
 #        driver2nationality: "USA"
 #    },
