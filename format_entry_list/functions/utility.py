@@ -18,3 +18,13 @@ def sortEntriesByClass(entry_arr, sort_arr):
             ordered += entry_arr
 
     return ordered
+
+
+def getSeriesShort(series_name):
+    series = {
+        'GT4 America': 'PGT4A',
+        'GT World Challenge America': 'GTWCA',
+        'GT America': 'GTAM',
+        'TC America': 'TCAM'
+    }
+    return series[series_name]
