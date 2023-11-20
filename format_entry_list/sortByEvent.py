@@ -1,5 +1,4 @@
 # take  in array of entries, and sort by event in dict
-from hmac import new
 from format_entry_list.events import events_dict
 from format_entry_list.convertEntry import convertEntry, convertSeries, convertClassif
 import json
@@ -16,8 +15,8 @@ def sortByEvent(all_entries):
 
         new_entry = convertEntry(entry)
 
-        print('new----', json.dumps(new_entry, indent=4))
+        #print('new----', json.dumps(new_entry, indent=4))
 
-        entry_event_dict[event_name].append(entry)
+        entry_event_dict[event_name].append(new_entry)
 
     return entry_event_dict
