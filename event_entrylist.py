@@ -2,6 +2,8 @@
 from fetch_entries import fetch_entries
 from format_entry_list.handleSingleSeries import handle_single_driver
 from format_entry_list.functions.sortByEvent import sortByEvent
+from format_entry_list.functions.sortByseries import sortBySeries
+from format_entry_list.test.test_entries import test_entries
 from functions.csv_to_series_entries import csv_to_series_entries
 import openpyxl
 import json
@@ -53,8 +55,11 @@ if __name__ == "__main__":
     event = "Sonoma Raceway"
     data = fetch_entries()
     sorted_entries = sortByEvent(data)
-    print('sorted_entries', json.dumps(sorted_entries, indent=4))
+
+    # add in test data to sonoma
+    sorted_entries['Sonoma Raceway'] = sorted_entries['Sonoma Raceway'] + test_entries
+
     entries = sorted_entries.get(event)
-    # sort by series
-    # entries = csv_to_series_entries(entries_csv, event)
-    event_entrylist(entries)
+    series_entries = sortBySeries(entries)
+
+    event_entrylist(series_entries)
