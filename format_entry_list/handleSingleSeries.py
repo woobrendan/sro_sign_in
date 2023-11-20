@@ -1,14 +1,4 @@
-from format_entry_list.functions.utility import sortEntriesByClass
-
-
-def getSeriesShort(series_name):
-    series = {
-        'GT4 America': 'PGT4A',
-        'GT World Challenge America': 'GTWCA',
-        'GT America': 'GTAM',
-        'TC America': 'TCAM'
-    }
-    return series[series_name]
+from format_entry_list.functions.utility import sortEntriesByClass, getSeriesShort
 
 
 def handle_single_driver(wb, entries):
