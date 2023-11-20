@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from format_entry_list.sortByEvent import sortByEvent
+from format_entry_list.functions.sortByEvent import sortByEvent
 import requests
 import os
 
