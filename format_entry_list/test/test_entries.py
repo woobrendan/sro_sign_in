@@ -1,4 +1,4 @@
-tc_entries = [
+test_entries = [
     {
         "series": "TC America",
         "event": "Sonoma Raceway",
@@ -103,15 +103,15 @@ tc_entries = [
     {
         "series": "GT America",
         "event": "Sonoma Raceway",
-        "class": "GT4",
-        "number": "2",
-        "team": "Big Motorsports",
-        "driver1firstName": "Cavan",
-        "driver1lastName": "Biggio",
+        "class": "SRO3",
+        "number": "333",
+        "team": "Schnieder Racing",
+        "driver1firstName": "John",
+        "driver1lastName": "Schnieder",
         "driver1nationality": "USA",
-        "car": "Mercedes-AMG GT4",
-        "manufacturer": "Mercedes",
-        "sponsors": "Craig Biggio"
+        "car": "Audi R8 LMS GT3 Evo 2",
+        "manufacturer": "Audi",
+        "sponsors": "Schneider Hot Dogs"
     },
     {
         "series": "GT America",
