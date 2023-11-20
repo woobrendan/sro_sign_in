@@ -1,10 +1,21 @@
+from format_entry_list.functions.utility import sortEntriesByClass
+
+
+def getSeriesShort(series_name):
+    series = {
+        'GT4 America': 'PGT4A',
+        'GT World Challenge America': 'GTWCA',
+        'GT America': 'GTAM',
+        'TC America': 'TCAM'
+    }
+    return series[series_name]
+
+
 def handle_single_driver(wb, entries):
     first_entry = entries[0]
     series = first_entry['series']
 
-    series_name = series_long_name(first_entry['series'])
-
-    sheet = wb[series]
+    sheet = wb[getSeriesShort(series)]
     current = 7
 
     sort_arr = ['GT3', 'GT2', 'GT4'] if series == 'GTAM' else [
@@ -27,7 +38,7 @@ def handle_single_driver(wb, entries):
         vehicle_col = 9 if series == 'GTAM' else 7
         classif_col = 10 if series == 'GTAM' else 8
 
-        sheet.cell(row=current, column=1, value=series_name)
+        sheet.cell(row=current, column=1, value=series)
         sheet.cell(row=current, column=2, value=entry['number'])
         sheet.cell(row=current, column=3, value=entry['Team Name'])
         sheet.cell(row=current, column=4, value=entry['driver1'])
@@ -37,3 +48,17 @@ def handle_single_driver(wb, entries):
         sheet.cell(row=current, column=classif_col, value=entry['classif'])
 
         current += 1
+
+
+# {
+#    "series": "GT America",
+#    "class": "SRO3",
+#    "number": "3",
+#    "team": "SKI Autosports",
+#    "driver1firstName": "Johnny",
+#    "driver1lastName": "O'Connell",
+#    "driver1nationality": "USA",
+#    "car": "audiR8Lms",
+#    "manufacturer": "Audi",
+#    "sponsors": "SKI Autosports"
+# }
