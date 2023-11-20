@@ -1,6 +1,7 @@
 tc_entries = [
     {
         "series": "TC America",
+        "event": "Sonoma Raceway",
         "class": "TCA",
         "number": "9",
         "team": "Skip Barber Racing",
@@ -13,6 +14,7 @@ tc_entries = [
     },
     {
         "series": "TC America",
+        "event": "Sonoma Raceway",
         "class": "TC",
         "number": " 50",
         "team": "Bo Racing",
@@ -25,6 +27,7 @@ tc_entries = [
     },
     {
         "series": "TC America",
+        "event": "Sonoma Raceway",
         "class": "TCX",
         "number": "80",
         "team": "VG Racing",
@@ -37,6 +40,7 @@ tc_entries = [
     },
     {
         "series": "TC America",
+        "event": "Sonoma Raceway",
         "class": "TCA",
         "number": "9",
         "team": "Skip Barber Racing",
@@ -49,6 +53,7 @@ tc_entries = [
     },
     {
         "series": "GT4 America",
+        "event": "Sonoma Raceway",
         "class": "Silver",
         "number": "28",
         "team": "G Speed",
@@ -66,6 +71,7 @@ tc_entries = [
     },
     {
         "series": "GT4 America",
+        "event": "Sonoma Raceway",
         "class": "Am",
         "number": "888",
         "team": "Audi Sport Team Asia",
@@ -83,6 +89,7 @@ tc_entries = [
     },
     {
         "series": "GT America",
+        "event": "Sonoma Raceway",
         "class": "GT4",
         "number": "2",
         "team": "Big Motorsports",
@@ -95,6 +102,7 @@ tc_entries = [
     },
     {
         "series": "GT America",
+        "event": "Sonoma Raceway",
         "class": "GT4",
         "number": "2",
         "team": "Big Motorsports",
@@ -107,6 +115,7 @@ tc_entries = [
     },
     {
         "series": "GT America",
+        "event": "Sonoma Raceway",
         "class": "GT2",
         "number": "222",
         "team": "Varsho Autosport",
@@ -119,6 +128,7 @@ tc_entries = [
     },
     {
         "series": "GT World Challenge America",
+        "event": "Sonoma Raceway",
         "class": "Pro-Am",
         "number": "6",
         "team": "K-Pax Racing",
@@ -136,6 +146,7 @@ tc_entries = [
     },
     {
         "series": "GT World Challenge America",
+        "event": "Sonoma Raceway",
         "class": "Am",
         "number": "55",
         "team": "Turner Motorsports",
