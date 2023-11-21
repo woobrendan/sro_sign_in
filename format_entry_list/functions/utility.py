@@ -4,18 +4,17 @@ def sortEntriesByClass(entry_arr, sort_arr):
 
     for entry in entry_arr:
         classif = entry['class']
-        exists = entries.get(classif)
+        exists = entries.get(classif, [])
+        exists.append(entry)
 
-        if exists:
-            entries[classif].append(entry)
-        else:
-            entries[classif] = [entry]
+        entries[classif] = exists
 
     ordered = []
+    # loop through SRO3, GT2, GT4 fetch val using key from entries and create one long arr
     for car_class in sort_arr:
-        entry_arr = entries.get(car_class)
-        if entry_arr:
-            ordered += entry_arr
+        entries_arr = entries.get(car_class)
+        if entries_arr:
+            ordered += entries_arr
 
     return ordered
 
