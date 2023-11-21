@@ -8,7 +8,7 @@ def handle_single_driver(wb, entries):
     sheet = wb[getSeriesShort(series)]
     current = 7
 
-    sort_arr = ['GT3', 'GT2', 'GT4'] if series == 'GTAM' else [
+    sort_arr = ['SRO3', 'GT2', 'GT4'] if series == 'GT America' else [
         'TCX', 'TC', 'TCA']
 
     entries = sortEntriesByClass(entries, sort_arr)
@@ -22,7 +22,7 @@ def handle_single_driver(wb, entries):
 
     for entry in entries:
 
-        entry['classif'] = 'SRO3' if series == 'GTAM' and entry['classif'] == 'GT3' else entry['classif']
+        # entry['classif'] = 'SRO3' if series == 'GTAM' and entry['classif'] == 'GT3' else entry['classif']
 
         sponsor_col = 8 if series == 'GTAM' else 6
         vehicle_col = 9 if series == 'GTAM' else 7
@@ -30,12 +30,13 @@ def handle_single_driver(wb, entries):
 
         sheet.cell(row=current, column=1, value=series)
         sheet.cell(row=current, column=2, value=entry['number'])
-        sheet.cell(row=current, column=3, value=entry['Team Name'])
-        sheet.cell(row=current, column=4, value=entry['driver1'])
-        sheet.cell(row=current, column=5, value=entry['NAT'])
+        sheet.cell(row=current, column=3, value=entry['team'])
+        sheet.cell(row=current, column=4,
+                   value=f'{entry["driver1firstName"]} {entry["driver1lastName"]}')
+        sheet.cell(row=current, column=5, value=entry['driver1nationality'])
         sheet.cell(row=current, column=sponsor_col, value=entry['sponsors'])
-        sheet.cell(row=current, column=vehicle_col, value=entry['vehicle'])
-        sheet.cell(row=current, column=classif_col, value=entry['classif'])
+        sheet.cell(row=current, column=vehicle_col, value=entry['car'])
+        sheet.cell(row=current, column=classif_col, value=entry['class'])
 
         current += 1
 
