@@ -21,15 +21,17 @@ def handle_single_driver(wb, entries):
     sheet['D4'] = date_str
 
     for entry in entries:
+        car_num = entry["number"]
 
-        # entry['classif'] = 'SRO3' if series == 'GTAM' and entry['classif'] == 'GT3' else entry['classif']
+        if not car_num.startswith('0') and car_num.isdigit():
+            car_num = int(car_num)
 
         sponsor_col = 8 if series_short == 'GTAM' else 6
         vehicle_col = 9 if series_short == 'GTAM' else 7
         classif_col = 10 if series_short == 'GTAM' else 8
 
         sheet.cell(row=current, column=1, value=entry["series"])
-        sheet.cell(row=current, column=2, value=entry['number'])
+        sheet.cell(row=current, column=2, value=car_num)
         sheet.cell(row=current, column=3, value=entry['team'])
         sheet.cell(row=current, column=4,
                    value=f'{entry["driver1firstName"]} {entry["driver1lastName"]}')
