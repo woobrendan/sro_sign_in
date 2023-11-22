@@ -3,12 +3,12 @@ from format_entry_list.functions.utility import sortEntriesByClass, getSeriesSho
 
 def handle_single_driver(wb, entries):
     first_entry = entries[0]
-    series = first_entry['series']
+    series_short = getSeriesShort(first_entry['series'])
 
-    sheet = wb[getSeriesShort(series)]
+    sheet = wb[series_short]
     current = 7
 
-    sort_arr = ['SRO3', 'GT2', 'GT4'] if series == 'GT America' else [
+    sort_arr = ['SRO3', 'GT2', 'GT4'] if series_short == 'GTAM' else [
         'TCX', 'TC', 'TCA']
 
     entries = sortEntriesByClass(entries, sort_arr)
@@ -24,11 +24,11 @@ def handle_single_driver(wb, entries):
 
         # entry['classif'] = 'SRO3' if series == 'GTAM' and entry['classif'] == 'GT3' else entry['classif']
 
-        sponsor_col = 8 if series == 'GTAM' else 6
-        vehicle_col = 9 if series == 'GTAM' else 7
-        classif_col = 10 if series == 'GTAM' else 8
+        sponsor_col = 8 if series_short == 'GTAM' else 6
+        vehicle_col = 9 if series_short == 'GTAM' else 7
+        classif_col = 10 if series_short == 'GTAM' else 8
 
-        sheet.cell(row=current, column=1, value=series)
+        sheet.cell(row=current, column=1, value=entry["series"])
         sheet.cell(row=current, column=2, value=entry['number'])
         sheet.cell(row=current, column=3, value=entry['team'])
         sheet.cell(row=current, column=4,
