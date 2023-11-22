@@ -14,6 +14,19 @@ test_entries = [
     },
     {
         "series": "TC America",
+        "event": "FULL SEASON ENTRY",
+        "class": "TC",
+        "number": "56",
+        "team": "Blue Jays Racing",
+        "driver1firstName": "Roy",
+        "driver1lastName": "Halladay",
+        "driver1nationality": "USA",
+        "car": "Honda Civic Type-R TC",
+        "manufacturer": "Honda",
+        "sponsors": ""
+    },
+    {
+        "series": "TC America",
         "event": "Sonoma Raceway",
         "class": "TC",
         "number": " 50",
