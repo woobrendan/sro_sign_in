@@ -39,16 +39,12 @@ def event_entrylist(series_entries):
 
     file_name = "Sonoma Provisional Entry List"
 
-#    for series in ['GTAM', 'TCAM']:
-#        entries = series_entries[series]
-#
-#        handle_single_driver(wb, entries)
-#
-    entries = series_entries['GTAM']
+    for series in ['GTAM', 'TCAM']:
+        entries = series_entries[series]
 
-    handle_single_driver(wb, entries)
+        handle_single_driver(wb, entries)
 
-    # wb.save(f'./entry_lists/{file_name}.xlsx')
+    wb.save(f'./entry_lists/{file_name}.xlsx')
 
 
 if __name__ == "__main__":
