@@ -29,7 +29,7 @@ test_entries = [
         "series": "TC America",
         "event": "Sonoma Raceway",
         "class": "TC",
-        "number": " 50",
+        "number": "50",
         "team": "Bo Racing",
         "driver1firstName": "Bo",
         "driver1lastName": "Bichette",
