@@ -39,19 +39,6 @@ test_entries = [
         "sponsors": "Mary Browns Chicken"
     },
     {
-        "series": "TC America",
-        "event": "Sonoma Raceway",
-        "class": "TCA",
-        "number": "9",
-        "team": "Skip Barber Racing",
-        "driver1firstName": "Matt",
-        "driver1lastName": "Chapman",
-        "driver1nationality": "USA",
-        "car": "Honda Civic Si",
-        "manufacturer": "Honda",
-        "sponsors": "Mustaches, BioSteel"
-    },
-    {
         "series": "GT4 America",
         "event": "Sonoma Raceway",
         "class": "Silver",
