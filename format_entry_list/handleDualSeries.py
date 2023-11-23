@@ -1,7 +1,7 @@
 from format_entry_list.functions.utility import sortEntriesByClass, getSeriesShort
 
 
-def handle_single_driver(wb, entries):
+def handle_dual_driver(wb, entries):
     first_entry = entries[0]
     series_short = getSeriesShort(first_entry['series'])
 
@@ -46,7 +46,7 @@ def handle_single_driver(wb, entries):
         current += 1
 
 
-#{
+# {
 #        "series": "GT4 America",
 #        "event": "Sonoma Raceway",
 #        "class": "Silver",
