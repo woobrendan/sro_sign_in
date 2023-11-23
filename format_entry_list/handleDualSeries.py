@@ -26,32 +26,41 @@ def handle_single_driver(wb, entries):
         if not car_num.startswith('0') and car_num.isdigit():
             car_num = int(car_num)
 
-        sponsor_col = 8 if series_short == 'GTAM' else 6
-        vehicle_col = 9 if series_short == 'GTAM' else 7
-        classif_col = 10 if series_short == 'GTAM' else 8
-
         sheet.cell(row=current, column=1, value=entry["series"])
         sheet.cell(row=current, column=2, value=car_num)
         sheet.cell(row=current, column=3, value=entry['team'])
         sheet.cell(row=current, column=4,
                    value=f'{entry["driver1firstName"]} {entry["driver1lastName"]}')
         sheet.cell(row=current, column=5, value=entry['driver1nationality'])
-        sheet.cell(row=current, column=sponsor_col, value=entry['sponsors'])
-        sheet.cell(row=current, column=vehicle_col, value=entry['car'])
-        sheet.cell(row=current, column=classif_col, value=entry['class'])
+        # driver license
+        sheet.cell(row=current, column=7, value=entry['driver1category'])
+        sheet.cell(row=current, column=8,
+                   value=f'{entry["driver2firstName"]} {entry["driver2lastName"]}')
+        sheet.cell(row=current, column=9, value=entry['driver2nationality'])
+        # driver license
+        sheet.cell(row=current, column=11, value=entry['driver2category'])
+        sheet.cell(row=current, column=12, value=entry['sponsors'])
+        sheet.cell(row=current, column=13, value=entry['car'])
+        sheet.cell(row=current, column=14, value=entry['class'])
 
         current += 1
 
 
-# {
-#    "series": "GT America",
-#    "class": "SRO3",
-#    "number": "3",
-#    "team": "SKI Autosports",
-#    "driver1firstName": "Johnny",
-#    "driver1lastName": "O'Connell",
-#    "driver1nationality": "USA",
-#    "car": "audiR8Lms",
-#    "manufacturer": "Audi",
-#    "sponsors": "SKI Autosports"
-# }
+#{
+#        "series": "GT4 America",
+#        "event": "Sonoma Raceway",
+#        "class": "Silver",
+#        "number": "28",
+#        "team": "G Speed",
+#        "driver1firstName": "Kevin",
+#        "driver1lastName": "Gausman",
+#        "driver1category": "Silver",
+#        "driver1nationality": "USA",
+#        "driver2firstName": "Chris",
+#        "driver2lastName": "Bassatt",
+#        "driver2category": "Silver",
+#        "driver2nationality": "CAN",
+#        "car": "Porsche 718 Cayman CS",
+#        "manufacturer": "Porsche",
+#        "sponsors": "Cy Young"
+#    },
