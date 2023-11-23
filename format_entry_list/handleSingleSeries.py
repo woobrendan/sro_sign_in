@@ -1,7 +1,7 @@
 from format_entry_list.functions.utility import sortEntriesByClass, getSeriesShort
 
 
-def handle_single_driver(wb, entries):
+def handle_single_driver(wb, entries, event):
     first_entry = entries[0]
     series_short = getSeriesShort(first_entry['series'])
 
@@ -9,18 +9,17 @@ def handle_single_driver(wb, entries):
     current = 7
 
     sort_arr = ['SRO3', 'GT2', 'GT4'] if series_short == 'GTAM' else [
-        'TCX', 'TC', 'TCA']
+        'TCX', 'TC', 'TCA'] if series_short != 'GR Cup' else ['Am']
 
-    entries = sortEntriesByClass(entries, sort_arr)
+    sorted_entries = sortEntriesByClass(entries, sort_arr)
 
     # Entry list title, event name and date
-    event_name = first_entry['event']
     # Change date value accordingly
     date_str = 'April 5 - 7'
-    sheet['D2'] = event_name
+    sheet['D2'] = event
     sheet['D4'] = date_str
 
-    for entry in entries:
+    for entry in sorted_entries:
         car_num = entry["number"]
 
         if not car_num.startswith('0') and car_num.isdigit():
