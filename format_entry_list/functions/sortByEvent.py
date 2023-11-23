@@ -1,6 +1,6 @@
 # take  in array of entries, and sort by event in dict
 from format_entry_list.events import events_dict
-from format_entry_list.convertEntry import convertEntry
+from format_entry_list.functions.convertEntry import convertEntry
 import copy
 
 
