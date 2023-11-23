@@ -180,5 +180,31 @@ test_entries = [
         "manufacturer": "Porsche",
         "sponsors": ""
     },
+    {
+        "series": "Toyota GR Cup",
+        "event": "Sonoma Raceway",
+        "class": "Am",
+        "number": "20",
+        "team": "Bringer of Rain Racing",
+        "driver1firstName": "Josh",
+        "driver1lastName": "Donaldson",
+        "driver1nationality": "USA",
+        "car": "Toyota GR86 ",
+        "manufacturer": "Toyota",
+        "sponsors": "Umbrellas"
+    },
+    {
+        "series": "Toyota GR Cup",
+        "event": "Sonoma Raceway",
+        "class": "Am",
+        "number": "17",
+        "team": "Team Toyota Gazoo Racing",
+        "driver1firstName": "Shoehi",
+        "driver1lastName": "Ohtani",
+        "driver1nationality": "JAP",
+        "car": "Toyota GR86 ",
+        "manufacturer": "Toyota",
+        "sponsors": "Mustaches, BioSteel"
+    }
 
 ]
