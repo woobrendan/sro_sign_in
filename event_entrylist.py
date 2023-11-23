@@ -1,10 +1,11 @@
 # from functions.excel_handlers import handle_single_driver
 from fetch_entries import fetch_entries
 from format_entry_list.handleSingleSeries import handle_single_driver
+from format_entry_list.handleDualSeries import handle_dual_driver
 from format_entry_list.functions.sortByEvent import sortByEvent
 from format_entry_list.functions.sortByseries import sortBySeries
 from format_entry_list.test.test_entries import test_entries
-from functions.csv_to_series_entries import csv_to_series_entries
+# from functions.csv_to_series_entries import csv_to_series_entries
 import openpyxl
 import json
 
@@ -43,6 +44,11 @@ def event_entrylist(series_entries):
         entries = series_entries[series]
 
         handle_single_driver(wb, entries)
+
+    for series in ['GTWCA', 'PGT4A']:
+        entries = series_entries[series]
+
+        handle_dual_driver(wb, entries)
 
     wb.save(f'./entry_lists/{file_name}.xlsx')
 
