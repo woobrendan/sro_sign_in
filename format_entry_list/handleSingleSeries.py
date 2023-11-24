@@ -1,4 +1,5 @@
 from format_entry_list.functions.utility import sortEntriesByClass, getSeriesShort
+from format_entry_list.events import sro_events
 
 
 def handle_single_driver(wb, entries, event):
@@ -14,10 +15,8 @@ def handle_single_driver(wb, entries, event):
     sorted_entries = sortEntriesByClass(entries, sort_arr)
 
     # Entry list title, event name and date
-    # Change date value accordingly
-    date_str = 'April 5 - 7'
     sheet['D2'] = event
-    sheet['D4'] = date_str
+    sheet['D4'] = sro_events[event]
 
     for entry in sorted_entries:
         car_num = entry["number"]
