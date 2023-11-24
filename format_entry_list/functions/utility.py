@@ -24,6 +24,7 @@ def getSeriesShort(series_name):
         'GT4 America': 'PGT4A',
         'GT World Challenge America': 'GTWCA',
         'GT America': 'GTAM',
-        'TC America': 'TCAM'
+        'TC America': 'TCAM',
+        'Toyota GR Cup': 'GR Cup'
     }
     return series[series_name]
