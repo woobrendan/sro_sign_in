@@ -1,5 +1,6 @@
 from format_entry_list.functions.utility import sortEntriesByClass, getSeriesShort
 from format_entry_list.events import sro_events
+from format_entry_list.vehicles import vehicles
 
 
 def handle_dual_driver(wb, entries, event):
@@ -20,6 +21,7 @@ def handle_dual_driver(wb, entries, event):
 
     for entry in sorted_entries:
         car_num = entry["number"]
+        car = vehicles.get(entry['car'], entry['car'])
 
         if not car_num.startswith('0') and car_num.isdigit():
             car_num = int(car_num)
@@ -38,7 +40,7 @@ def handle_dual_driver(wb, entries, event):
         # driver license
         sheet.cell(row=current, column=11, value=entry['driver2category'])
         sheet.cell(row=current, column=12, value=entry['sponsors'])
-        sheet.cell(row=current, column=13, value=entry['car'])
+        sheet.cell(row=current, column=13, value=car)
         sheet.cell(row=current, column=14, value=entry['class'])
 
         current += 1
