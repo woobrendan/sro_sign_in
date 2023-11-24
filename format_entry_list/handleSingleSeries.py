@@ -1,5 +1,6 @@
 from format_entry_list.functions.utility import sortEntriesByClass, getSeriesShort
 from format_entry_list.events import sro_events
+from format_entry_list.vehicles import vehicles
 
 
 def handle_single_driver(wb, entries, event):
@@ -20,6 +21,7 @@ def handle_single_driver(wb, entries, event):
 
     for entry in sorted_entries:
         car_num = entry["number"]
+        car = vehicles.get(entry['car'], entry['car'])
 
         if not car_num.startswith('0') and car_num.isdigit():
             car_num = int(car_num)
@@ -35,7 +37,7 @@ def handle_single_driver(wb, entries, event):
                    value=f'{entry["driver1firstName"]} {entry["driver1lastName"]}')
         sheet.cell(row=current, column=5, value=entry['driver1nationality'])
         sheet.cell(row=current, column=sponsor_col, value=entry['sponsors'])
-        sheet.cell(row=current, column=vehicle_col, value=entry['car'])
+        sheet.cell(row=current, column=vehicle_col, value=car)
         sheet.cell(row=current, column=classif_col, value=entry['class'])
 
         current += 1
