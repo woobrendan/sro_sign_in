@@ -36,6 +36,10 @@ def handle_single_driver(wb, entries, event):
         sheet.cell(row=current, column=4,
                    value=f'{entry["driver1firstName"]} {entry["driver1lastName"]}')
         sheet.cell(row=current, column=5, value=entry['driver1nationality'])
+
+        if series_short == 'GTAM':
+            sheet.cell(row=current, column=7, value='Bronze')
+
         sheet.cell(row=current, column=sponsor_col, value=entry['sponsors'])
         sheet.cell(row=current, column=vehicle_col, value=car)
         sheet.cell(row=current, column=classif_col, value=entry['class'])
@@ -43,15 +47,4 @@ def handle_single_driver(wb, entries, event):
         current += 1
 
 
-# {
-#    "series": "GT America",
-#    "class": "SRO3",
-#    "number": "3",
-#    "team": "SKI Autosports",
-#    "driver1firstName": "Johnny",
-#    "driver1lastName": "O'Connell",
-#    "driver1nationality": "USA",
-#    "car": "audiR8Lms",
-#    "manufacturer": "Audi",
-#    "sponsors": "SKI Autosports"
 # }
