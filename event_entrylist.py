@@ -5,6 +5,7 @@ from format_entry_list.functions.sortByEvent import sortByEvent
 from format_entry_list.functions.sortByseries import sortBySeries
 from format_entry_list.test.test_entries import test_entries
 import openpyxl
+import json
 
 
 # refactor using entries from API
@@ -32,8 +33,7 @@ if __name__ == "__main__":
     sorted_entries = sortByEvent(data)
 
     # add in test data to sonoma
-    sorted_entries['Sonoma Raceway'] = sorted_entries['Sonoma Raceway'] + \
-        sorted_entries['FULL SEASON ENTRY'] + test_entries
+    sorted_entries[event] += sorted_entries['FULL SEASON ENTRY'] + test_entries
 
     entries = sorted_entries.get(event)
     series_entries = sortBySeries(entries)
