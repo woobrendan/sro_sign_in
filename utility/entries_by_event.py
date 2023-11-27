@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from functions.csv_to_series_entries import csv_to_all_entries
+from utility.csv_to_series_entries import csv_to_all_entries
 
 # Change Variables here
 csv_file = '../entries_23.csv'

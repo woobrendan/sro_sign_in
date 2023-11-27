@@ -1,5 +1,5 @@
 from format_entry_list.functions.utility import getSeriesShort
-from functions.sortFuncs import sort_by_num
+from utility.sortFuncs import sort_by_num
 
 
 def sortBySeries(entry_arr):

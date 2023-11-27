@@ -1,5 +1,5 @@
 import openpyxl
-from functions.csv_to_series_entries import csv_to_series_entries
+from utility.csv_to_series_entries import csv_to_series_entries
 
 # {'Driver Designation': 'Pro - Am', 'Team Name': 'RealTime', 'number': '43', 'event': 'Road America', 'series': 'GTWCA', 'driver2': 'Adam Christodoulou', 'driver1': 'Anthony Bartone'}
 

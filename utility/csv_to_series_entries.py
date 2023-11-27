@@ -1,6 +1,6 @@
 import csv
-from functions.sortFuncs import sortBySeries
-from functions.utility import getSeries
+from utility.sortFuncs import sortBySeries
+from utility.utility import getSeries
 
 sponsor_str = 'Team Sponsors - Please seperate each Sponsor with a comma'
 key_list = [

@@ -1,6 +1,6 @@
 import openpyxl
-from functions.excel_handlers import event_log
-from functions.sortFuncs import get_teams_carNums
+from utility.excel_handlers import event_log
+from utility.sortFuncs import get_teams_carNums
 
 
 def create_manager_signin(series_entries, event):
