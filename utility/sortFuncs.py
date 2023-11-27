@@ -1,3 +1,7 @@
+import copy
+from utility.convertEntry import convertEntry
+from utility.events import events_dict
+
 
 def sort_by_num(entry):
     number = entry['number']
@@ -62,3 +66,18 @@ def sortEntriesByClass(entry_arr, sort_arr):
             ordered += entry_arr
 
     return ordered
+
+
+def sortByEvent(all_entries):
+    entry_event_dict = copy.deepcopy(events_dict)
+
+    for entry in all_entries:
+        event_name = entry['eventLabel']
+
+        # convert entry into object entry list objs
+
+        new_entry = convertEntry(entry)
+
+        entry_event_dict[event_name].append(new_entry)
+
+    return entry_event_dict
