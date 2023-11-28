@@ -1,6 +1,7 @@
 import copy
 from utility.convertEntry import convertEntry
 from utility.events import events_dict
+from utility.utility import getSeriesShort
 
 
 def sort_by_num(entry):
@@ -11,12 +12,12 @@ def sort_by_num(entry):
 def sortBySeries(entry_arr):
     series = {}
     for entry in entry_arr:
-        series_name = entry['series']
+        series_short = getSeriesShort(entry['series'])
 
         #  return array of entries if key exists, else return empty arr
-        series_entries = series.get(series_name, [])
+        series_entries = series.get(series_short, [])
         series_entries.append(entry)
-        series[series_name] = series_entries
+        series[series_short] = series_entries
 
     for series_name in series.keys():
         series[series_name].sort(key=sort_by_num)
