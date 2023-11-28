@@ -1,4 +1,5 @@
-from format_entry_list.functions.utility import sortEntriesByClass, getSeriesShort
+from utility.sortFuncs import sortEntriesByClass
+from utility.utility import getSeriesShort
 from utility.events import sro_events
 from format_entry_list.vehicles import vehicles
 
