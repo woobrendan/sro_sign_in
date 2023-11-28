@@ -7,6 +7,17 @@ def getSeries(series_name):
     return series[series_name]
 
 
+def getSeriesShort(series_name):
+    series = {
+        'GT4 America': 'PGT4A',
+        'GT World Challenge America': 'GTWCA',
+        'GT America': 'GTAM',
+        'TC America': 'TCAM',
+        'Toyota GR Cup': 'GR Cup'
+    }
+    return series[series_name]
+
+
 def series_long_name(series_name):
     series = {
         'GTWCA': 'FGTWCA',
