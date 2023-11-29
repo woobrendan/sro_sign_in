@@ -1,14 +1,12 @@
 from fetch_entries import fetch_entries
 from format_entry_list.handleSingleSeries import handle_single_driver
 from format_entry_list.handleDualSeries import handle_dual_driver
-from format_entry_list.functions.sortByEvent import sortByEvent
-from format_entry_list.functions.sortByseries import sortBySeries
+from utility.sortFuncs import sortByEvent, sortBySeries
 from format_entry_list.test.test_entries import test_entries
 import openpyxl
 import json
 
 
-# refactor using entries from API
 def event_entrylist(series_entries, event):
     wb = openpyxl.load_workbook('./templates/entry_list_template.xlsx')
 
