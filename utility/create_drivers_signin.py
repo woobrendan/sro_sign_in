@@ -1,7 +1,4 @@
 import openpyxl
-from utility.csv_to_series_entries import csv_to_series_entries
-
-# {'Driver Designation': 'Pro - Am', 'Team Name': 'RealTime', 'number': '43', 'event': 'Road America', 'series': 'GTWCA', 'driver2': 'Adam Christodoulou', 'driver1': 'Anthony Bartone'}
 
 
 def create_drivers_signin(series_entries, event):
@@ -14,12 +11,14 @@ def create_drivers_signin(series_entries, event):
 
         for entry in entries:
             sheet.cell(row=current, column=1, value=entry['number'])
-            sheet.cell(row=current, column=2, value=entry['Team Name'])
-            sheet.cell(row=current, column=3, value=entry['driver1'])
+            sheet.cell(row=current, column=2, value=entry['team'])
+            sheet.cell(row=current, column=3,
+                       value=f'{entry["driver1firstName"]} {entry["driver1lastName"]}')
 
             if series == 'GTWCA' or series == 'PGT4A':
-                sheet.cell(row=current, column=5, value=entry['driver2'])
+                sheet.cell(row=current, column=5,
+                           value=f'{entry["driver2firstName"]} {entry["driver2lastName"]}')
 
             current += 1
 
-    wb.save(f'./Driver_Sign_in/{event}.xlsx')
+    wb.save(f'./sign_in_sheets/drivers/{event}.xlsx')
