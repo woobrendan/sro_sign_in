@@ -30,13 +30,12 @@ def sortBySeries(entry_arr):
 def get_teams_carNums(entry_arr):
     teams = {}
     for entry in entry_arr:
-        team_name = entry['Team Name']
+        team_name = entry['team']
         num = entry['number']
 
-        if team_name in teams:
-            teams[team_name].append(num)
-        else:
-            teams[team_name] = [num]
+        exists = teams.get(team_name, [])
+        exists.append(num)
+        teams[team_name] = exists
 
     for team in teams.keys():
         unique_entries = list(set(teams[team]))
@@ -68,6 +67,7 @@ def sortEntriesByClass(entry_arr, sort_arr):
     return ordered
 
 
+# take in api version of entry, convert to simplified dict. keys are event names, values are array of entries
 def sortByEvent(all_entries):
     entry_event_dict = copy.deepcopy(events_dict)
 
