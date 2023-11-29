@@ -1,6 +1,4 @@
 import pandas as pd
-import os
-# from utility.csv_funcs.csv_to_series_entries import csv_to_all_entries
 from fetch_entries import fetch_entries
 from utility.sortFuncs import sortByEvent
 
@@ -9,7 +7,7 @@ from utility.sortFuncs import sortByEvent
 def entries_by_event(event):
     data = fetch_entries()
     sorted_entries = sortByEvent(data)
-    event_entries = sorted_entries[event]
+    event_entries = sorted_entries[event] + sorted_entries['FULL SEASON ENTRY']
 
     excel_file = f'event_entries/{event} entries.xlsx'
 
