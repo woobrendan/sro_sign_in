@@ -14,6 +14,19 @@ test_entries = [
     },
     {
         "series": "TC America",
+        "event": "Sonoma Raceway",
+        "class": "TCA",
+        "number": "21",
+        "team": "Skip Barber Racing",
+        "driver1firstName": "Joe",
+        "driver1lastName": "Carter",
+        "driver1nationality": "USA",
+        "car": "Honda Civic Si",
+        "manufacturer": "Honda",
+        "sponsors": "Walk offs"
+    },
+    {
+        "series": "TC America",
         "event": "FULL SEASON ENTRY",
         "class": "TC",
         "number": "56",
