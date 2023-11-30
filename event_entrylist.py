@@ -1,4 +1,4 @@
-from fetch_entries import fetch_entries
+from utility.fetch_entries import fetch_entries
 from format_entry_list.handleSingleSeries import handle_single_driver
 from format_entry_list.handleDualSeries import handle_dual_driver
 from utility.sortFuncs import sortByEvent, sortBySeries

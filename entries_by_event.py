@@ -1,5 +1,5 @@
 import pandas as pd
-from fetch_entries import fetch_entries
+from utility.fetch_entries import fetch_entries
 from utility.sortFuncs import sortByEvent
 
 
