@@ -1,5 +1,5 @@
 import openpyxl
-from utility.excel_handlers import event_log
+from format_sign_in.event_log import event_log
 from utility.sortFuncs import get_teams_carNums
 
 
