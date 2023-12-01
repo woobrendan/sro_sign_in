@@ -16,6 +16,7 @@ vehicles = {
     'porsche718CaymanGt4RsClubsport': 'Porsche 718 Cayman GT4 RS Clubsport',
     'toyotaGazooRacingGrSupraGt4Evo': 'Toyota Gazoo Racing GR Supra GT4 EVO',
     'acuraIntegraTypeS': 'Acura Integra Type S',
-    'subaruBrz': 'Subaru BRZ'
+    'subaruBrz': 'Subaru BRZ',
+    'audiR8LmsGt4': 'Audi R8 LMS GT4'
 
 }
