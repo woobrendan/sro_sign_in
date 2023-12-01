@@ -1,4 +1,5 @@
 from format_entry_list.labels import labels, car_types
+from format_entry_list.vehicles import vehicles
 import copy
 import re
 
@@ -46,7 +47,7 @@ def getManuf(vehicle):
     # Remove empty strings from the list
     parts = [part for part in parts if part]
 
-    return parts[0].capitalize()
+    return parts[0].strip().capitalize()
 
 
 def getDriverName(driver, field, entry):
@@ -95,7 +96,8 @@ def convertEntry(entry):
                 break
 
             if label == 'car' and field["label"] in car_types:
-                car = field['value']
+                car_val = field['value']
+                car = vehicles.get(car_val, car_val)
                 new_entry['car'] = car
                 new_entry['manufacturer'] = getManuf(car)
 
