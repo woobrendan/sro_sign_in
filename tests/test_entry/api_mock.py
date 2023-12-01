@@ -210,8 +210,8 @@ gt4_entry = {
 }
 
 gt4_expected = {
-    "series": "GT4 America",
     "event": "Sonoma Raceway",
+    "series": "GT4 America",
     "class": "Pro-Am",
     "number": "123",
     "team": "CDR Valkyrie",
@@ -226,4 +226,4 @@ gt4_expected = {
     "car": "Audi R8 LMS GT4",
     "manufacturer": "Audi",
     "sponsors": "Sponsor - test"
-},
+}
