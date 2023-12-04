@@ -69,6 +69,7 @@ def getDriverName(driver, field, entry):
 # Take in entry object from and convert into format usable for entry list and USAC app
 def convertEntry(entry):
     new_entry = {
+        "id": entry["id"],
         "event": entry["eventLabel"]
     }
 
