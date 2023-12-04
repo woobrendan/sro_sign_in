@@ -617,3 +617,150 @@ gtam_expected = {
     "manufacturer": "Audi",
     "sponsors": "SKI Autosports"
 }
+
+tcx_api = {
+    "id": 56285670,
+    "displayId": "01HEX9SWE04WKEH9JNC",
+    "formId": 656178,
+    "formName": "2024 SRO MOTORSPORTS ENTRY",
+    "formAccRef": "2024SRMTRSPRT",
+    "orderCustomerId": 879444,
+    "customerId": 28984564,
+    "orderId": 42957948,
+    "orderDisplayId": "01HEX9SWDF8PF5HE5TQ",
+    "orderNumber": "2024SRMTRSPRTKLM0004",
+    "orderEmail": "woo.brendan@gmail.com",
+    "levelLabel": "EVENT ENTRY",
+    "levelKey": "adult",
+    "amount": "5170",
+    "fee": "0",
+    "total": "5170",
+    "currency": "USD",
+    "status": "completed",
+    "fieldData": [
+        {
+                "amount": "0",
+                "label": "Fee",
+                "path": "fee"
+        },
+        {
+            "label": "Car Series",
+            "path": "carClass",
+            "value": "tc"
+        },
+        {
+            "amount": "0",
+            "label": "TC America",
+            "path": "carClass.tc",
+            "value": "true"
+        },
+        {
+            "label": "Car Class",
+            "path": "carType",
+            "value": "tca"
+        },
+        {
+            "amount": "0",
+            "label": "TCX",
+            "path": "carType.tca",
+            "value": "true"
+        },
+        {
+            "label": "Registered Car #",
+            "path": "pwcRegisteredCarNumber",
+            "value": "789"
+        },
+        {
+            "label": "Is this car registered with the RaceSelect program for 2024?",
+            "path": "thisCarRegisteredWith",
+            "value": "no"
+        },
+        {
+            "amount": "0",
+            "label": "No",
+            "path": "thisCarRegisteredWith.no",
+            "value": "true"
+        },
+        {
+            "label": "Team Name",
+            "path": "temName"
+        },
+        {
+            "label": "DXDT Racing",
+            "path": "temName.DXDT Racing",
+            "value": "true"
+        },
+        {
+            "label": "TCX Car Make / Model",
+            "path": "tcCarMaleModel",
+            "value": "acuraIntegraTypeS"
+        },
+        {
+            "amount": "0",
+            "label": "Acura Integra Type S TCX",
+            "path": "tcCarMaleModel.acuraIntegraTypeS",
+            "value": "true"
+        },
+        {
+            "label": "Car Year",
+            "path": "carYear",
+            "value": "1"
+        },
+        {
+            "label": "Team Sponsors - Please seperate each Sponsor with a comma",
+            "path": "teamSponsors",
+            "value": "TEST"
+        },
+        {
+            "label": "PRIMARY DRIVER NAME",
+            "path": "primaryDriverName"
+        },
+        {
+            "label": "Aaron Kaplan",
+            "path": "primaryDriverName.Aaron Kaplan",
+            "value": "true"
+        },
+        {
+            "label": "PRIMARY DRIVER NATIONALITY",
+            "path": "nationality2"
+        },
+        {
+            "label": "ABW",
+            "path": "nationality2.ABW",
+            "value": "true"
+        },
+        {
+            "label": "Driver Home Town",
+            "path": "driverHomeTown",
+            "value": "Test"
+        },
+        {
+            "label": "Driver Email",
+            "path": "driverEmail",
+            "value": "test@me.com"
+        },
+        {
+            "label": "Driver Cell",
+            "path": "driverCell",
+            "value": "+12893141303"
+        }
+    ],
+    "eventLabel": "Sonoma Raceway",
+    "sourceType": "standard",
+    "dateCreated": "2023-11-10T19:02:10Z",
+    "dateUpdated": "2023-11-16T18:18:47Z"
+}
+
+tcx_expected = {
+    "event": "Sonoma Raceway",
+    "series": "TC America",
+    "class": "TCX",
+    "number": "789",
+    "team": "DXDT Racing",
+    "driver1firstName": "Aaron",
+    "driver1lastName": "Kaplan",
+    "driver1nationality": "ABW",
+    "car": "Acura Integra Type S TCX",
+    "manufacturer": "Acura",
+    "sponsors": "TEST"
+}
