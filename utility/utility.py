@@ -33,3 +33,9 @@ def get_all_teams(series_entries):
     unique_teams = list(set(all_entries))
 
     return sorted(unique_teams)
+
+
+def findFirstEmptyRow(sheet):
+    for cell in sheet["A"]:
+        if cell.value is None:
+            return cell.row
