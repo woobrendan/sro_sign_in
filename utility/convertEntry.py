@@ -70,7 +70,8 @@ def getDriverName(driver, field, entry):
 def convertEntry(entry):
     new_entry = {
         "id": entry["id"],
-        "event": entry["eventLabel"]
+        "event": entry["eventLabel"],
+        'created': entry['dateCreated']
     }
 
     for label in labels:
