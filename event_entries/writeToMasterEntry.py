@@ -5,7 +5,7 @@ def writeToMasterEntry(entries, sheet):
     first = findFirstEmptyRow(sheet)
 
     for entry in entries:
-        event, series, number, team, driver1firstName, driver1lastName, driver1nationality, driver1category, driver2firstName, driver2lastName, driver2nationality, driver2category, sponsors, car, manufacturer = entry.values()
+        event, series, number, team, driver1firstName, driver1lastName, driver1nationality, driver1category, driver2firstName, driver2lastName, driver2nationality, driver2category, sponsors, car, manufacturer, created = entry.values()
 
         sheet.cell(row=first, column=1, value=event)
         sheet.cell(row=first, column=2, value=series)
@@ -27,3 +27,6 @@ def writeToMasterEntry(entries, sheet):
         sheet.cell(row=first, column=15, value=car)
         sheet.cell(row=first, column=16, value=manufacturer)
         sheet.cell(row=first, column=17, value=entry["id"])
+        sheet.cell(row=first, column=18, value=created)
+
+        first += 1
