@@ -36,6 +36,20 @@ def get_all_teams(series_entries):
 
 
 def findFirstEmptyRow(sheet):
-    for cell in sheet["A"]:
+    for cell in sheet["Q"]:
         if cell.value is None:
             return cell.row
+
+
+def getAllId(sheet, series):
+    ids = []
+
+    column = sheet["Q"]
+
+    for cell in column[1:]:
+        if cell.value is not None:
+            ids.append(cell.value)
+        else:
+            break  # exit loop when cell is empty
+
+    return ids
