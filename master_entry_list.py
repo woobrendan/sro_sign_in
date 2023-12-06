@@ -3,6 +3,7 @@ from event_entries.writeToMasterEntry import writeToMasterEntry
 from event_entries.getCurrentEntries import getCurrentEntries
 from utility.fetch_entries import fetch_entries
 from utility.utility import filterEntriesById
+from utility.convertEntry import convertEntry
 import openpyxl
 
 
@@ -17,12 +18,15 @@ def master_entry_list():
 
 # fetch responses
     api_entries = fetch_entries()
+    converted = [convertEntry(entry) for entry in api_entries]
 
 # filter for unique ids
-    filtered_entries = filterEntriesById(existing_ids, api_entries)
+    filtered_entries = filterEntriesById(existing_ids, converted)
 
 # add those new entries to entry lists
     writeToMasterEntry(filtered_entries, sheet)
+
+    wb.save(f'./event_entries/master_entry_list_latest.xlsx')
 
 
 # print out x new entries added
