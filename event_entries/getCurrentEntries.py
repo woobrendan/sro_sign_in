@@ -10,7 +10,7 @@ def getCurrentEntries():
 
     results = []
 
-    for i, row in data.iterrows():
+    for index, row in data.iterrows():
         row_dict = {f'{headers[i]}': value for i, value in enumerate(row)}
         results.append(row_dict)
 
