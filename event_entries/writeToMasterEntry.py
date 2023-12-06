@@ -14,7 +14,7 @@ def writeToMasterEntry(entries, sheet):
         sheet.cell(row=first, column=6, value=entry['driver1firstName'])
         sheet.cell(row=first, column=7, value=entry['driver1lastName'])
         sheet.cell(row=first, column=8, value=entry['driver1nationality'])
-        sheet.cell(row=first, column=9, value=entry['driver1category'])
+        sheet.cell(row=first, column=9, value=entry.get('driver1category', ''))
         sheet.cell(row=first, column=10,
                    value=entry.get('driver2firstName', ''))
         sheet.cell(row=first, column=11,
