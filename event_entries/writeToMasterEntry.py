@@ -5,28 +5,28 @@ def writeToMasterEntry(entries, sheet):
     first = findFirstEmptyRow(sheet)
 
     for entry in entries:
-        event, series, number, team, driver1firstName, driver1lastName, driver1nationality, driver1category, driver2firstName, driver2lastName, driver2nationality, driver2category, sponsors, car, manufacturer, created = entry.values()
 
-        sheet.cell(row=first, column=1, value=event)
-        sheet.cell(row=first, column=2, value=series)
+        sheet.cell(row=first, column=1, value=entry["event"])
+        sheet.cell(row=first, column=2, value=entry['series'])
         sheet.cell(row=first, column=3, value=entry["class"])
-        sheet.cell(row=first, column=4, value=number)
-        sheet.cell(row=first, column=5, value=team)
-        sheet.cell(row=first, column=6, value=driver1firstName)
-        sheet.cell(row=first, column=7, value=driver1lastName)
-        sheet.cell(row=first, column=8, value=driver1nationality)
-        sheet.cell(row=first, column=9, value=driver1category)
-
-        if driver2firstName:
-            sheet.cell(row=first, column=10, value=driver2firstName)
-            sheet.cell(row=first, column=11, value=driver2lastName)
-            sheet.cell(row=first, column=12, value=driver2nationality)
-            sheet.cell(row=first, column=13, value=driver2category)
-
-        sheet.cell(row=first, column=14, value=sponsors)
-        sheet.cell(row=first, column=15, value=car)
-        sheet.cell(row=first, column=16, value=manufacturer)
+        sheet.cell(row=first, column=4, value=entry['number'])
+        sheet.cell(row=first, column=5, value=entry['team'])
+        sheet.cell(row=first, column=6, value=entry['driver1firstName'])
+        sheet.cell(row=first, column=7, value=entry['driver1lastName'])
+        sheet.cell(row=first, column=8, value=entry['driver1nationality'])
+        sheet.cell(row=first, column=9, value=entry['driver1category'])
+        sheet.cell(row=first, column=10,
+                   value=entry.get('driver2firstName', ''))
+        sheet.cell(row=first, column=11,
+                   value=entry.get('driver2lastName', ''))
+        sheet.cell(row=first, column=12,
+                   value=entry.get('driver2nationality', ''))
+        sheet.cell(row=first, column=13,
+                   value=entry.get('driver2category', ''))
+        sheet.cell(row=first, column=14, value=entry['sponsors'])
+        sheet.cell(row=first, column=15, value=entry['car'])
+        sheet.cell(row=first, column=16, value=entry['manufacturer'])
         sheet.cell(row=first, column=17, value=entry["id"])
-        sheet.cell(row=first, column=18, value=created)
+        sheet.cell(row=first, column=18, value=entry['created'])
 
         first += 1
