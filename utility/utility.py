@@ -39,3 +39,11 @@ def findFirstEmptyRow(sheet):
     for cell in sheet["Q"]:
         if cell.value is None:
             return cell.row
+
+
+def unique_id(entry, id_list):
+    return entry['id'] not in id_list
+
+
+def filterEntriesById(id_list, all_entries):
+    return list(filter(lambda entry: unique_id(entry, id_list), all_entries))
