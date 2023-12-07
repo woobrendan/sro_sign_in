@@ -1,4 +1,3 @@
-import json
 from event_entries.writeToMasterEntry import writeToMasterEntry
 from event_entries.getCurrentEntries import getCurrentEntries
 from utility.fetch_entries import fetch_entries
@@ -16,15 +15,23 @@ def master_entry_list():
     existing_entries = getCurrentEntries()
     existing_ids = [entry["id"] for entry in existing_entries]
 
-# fetch responses
+# fetch responses and convert to dict
     api_entries = fetch_entries()
     converted = [convertEntry(entry) for entry in api_entries]
 
 # filter for unique ids
     filtered_entries = filterEntriesById(existing_ids, converted)
 
+    count = 0
+    for entry in filtered_entries:
+        count += 1
+        print(
+            f"New Entry Added:  {entry['event']} -- {entry['series']} -- {entry['team']} -- #{entry['number']}")
+
 # add those new entries to entry lists
     writeToMasterEntry(filtered_entries, sheet)
+
+    print(f'Added {count} new entries')
 
     wb.save(f'./event_entries/master_entry_list_latest.xlsx')
 
