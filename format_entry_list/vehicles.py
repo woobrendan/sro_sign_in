@@ -17,6 +17,7 @@ vehicles = {
     'toyotaGazooRacingGrSupraGt4Evo': 'Toyota Gazoo Racing GR Supra GT4 EVO',
     'acuraIntegraTypeS': 'Acura Integra Type S TCX',
     'subaruBrz': 'Subaru BRZ',
-    'audiR8LmsGt4': 'Audi R8 LMS GT4'
+    'audiR8LmsGt4': 'Audi R8 LMS GT4',
+    'audiR8Lms': 'Audi R8 LMS'
 
 }
