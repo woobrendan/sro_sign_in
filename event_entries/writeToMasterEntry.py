@@ -1,32 +1,21 @@
-from utility.utility import findFirstEmptyRow
+from utility.utility import findFirstEmptyRow, copy_alignment, copy_border, copy_font
+from event_entries.headers import headers
 
 
 def writeToMasterEntry(entries, sheet):
     first = findFirstEmptyRow(sheet)
+    first_cell = sheet.cell(row=2, column=1)
 
     for entry in entries:
 
-        sheet.cell(row=first, column=1, value=entry["event"])
-        sheet.cell(row=first, column=2, value=entry['series'])
-        sheet.cell(row=first, column=3, value=entry["class"])
-        sheet.cell(row=first, column=4, value=entry['number'])
-        sheet.cell(row=first, column=5, value=entry['team'])
-        sheet.cell(row=first, column=6, value=entry['driver1firstName'])
-        sheet.cell(row=first, column=7, value=entry['driver1lastName'])
-        sheet.cell(row=first, column=8, value=entry['driver1nationality'])
-        sheet.cell(row=first, column=9, value=entry.get('driver1category', ''))
-        sheet.cell(row=first, column=10,
-                   value=entry.get('driver2firstName', ''))
-        sheet.cell(row=first, column=11,
-                   value=entry.get('driver2lastName', ''))
-        sheet.cell(row=first, column=12,
-                   value=entry.get('driver2nationality', ''))
-        sheet.cell(row=first, column=13,
-                   value=entry.get('driver2category', ''))
-        sheet.cell(row=first, column=14, value=entry['sponsors'])
-        sheet.cell(row=first, column=15, value=entry['car'])
-        sheet.cell(row=first, column=16, value=entry['manufacturer'])
-        sheet.cell(row=first, column=17, value=entry["id"])
-        sheet.cell(row=first, column=18, value=entry['created'])
+        for i, header in enumerate(headers, start=1):
+            new_cell = sheet.cell(first, column=i)
+            val = entry.get(header, '')
+
+            new_cell.value = val
+
+            new_cell.font = copy_font(first_cell.font)
+            new_cell.alignment = copy_alignment(first_cell.alignment)
+            new_cell.border = copy_border(first_cell.border)
 
         first += 1
