@@ -1,12 +1,12 @@
 from dotenv import load_dotenv
-from utility.sortFuncs import sortByEvent
+import json
 import requests
 import os
 
 load_dotenv()
 
 
-def fetch_entries():
+def fetch_licenses():
 
     token = os.environ.get('TKSPICE')
     form = os.environ.get('LIC_ID')
@@ -24,13 +24,9 @@ def fetch_entries():
         )
         if response.status_code == 200:
             data = response.json()
+            print(json.dumps(data['data'], indent=4))
 
             return data['data']
 
     except requests.exceptions.RequestException:
         print(f'HTTP Request failed error {response.status_code}')
-
-
-if __name__ == '__main__':
-    entries = fetch_entries()
-    sortByEvent(entries)
