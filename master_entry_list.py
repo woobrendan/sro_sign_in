@@ -25,8 +25,11 @@ def master_entry_list():
     count = 0
     for entry in filtered_entries:
         count += 1
-        print(
-            f"New Entry Added:  {entry['event']} -- {entry['series']} -- {entry['team']} -- #{entry['number']}")
+        event = entry.get('event', 'Event Error')
+        series = entry.get('series', 'Series Error')
+        team = entry.get('team', 'Team Error')
+        num = entry.get(('number'))
+        print(f"New Entry Added:  {event} -- {series} -- {team} -- #{num}")
 
 # add those new entries to entry lists
     writeToMasterEntry(filtered_entries, sheet)
