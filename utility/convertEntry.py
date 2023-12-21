@@ -102,6 +102,7 @@ def convertEntry(entry):
                 car = vehicles.get(car_val, car_val)
                 new_entry['car'] = car
                 new_entry['manufacturer'] = getManuf(car)
+                break
 
             if field["label"] == label:
                 if label == 'Championship / Class':
