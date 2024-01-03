@@ -17,7 +17,9 @@ def master_entry_list():
 
 # fetch responses and convert to dict
     api_entries = fetch_entries()
-    converted = [convertEntry(entry) for entry in api_entries]
+    event_entries = [
+        entry for entry in api_entries if entry["levelLabel"] == "EVENT ENTRY"]
+    converted = [convertEntry(entry) for entry in event_entries]
 
 # filter for unique ids
     filtered_entries = filterEntriesById(existing_ids, converted)
