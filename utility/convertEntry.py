@@ -57,8 +57,8 @@ def getDriverName(driver, field, entry):
     copy_entry = copy.deepcopy(entry)
 
     if len(name_arr) == 3:
-        copy_entry[f"{driver}firstName"] = f'{name_arr[0]} {name_arr[1]}'
-        copy_entry[f"{driver}lastName"] = name_arr[2]
+        copy_entry[f"{driver}firstName"] = name_arr[0]
+        copy_entry[f"{driver}lastName"] = f'{name_arr[1]} {name_arr[2]}'
     else:
         copy_entry[f"{driver}firstName"] = name_arr[0]
         copy_entry[f"{driver}lastName"] = name_arr[1]
