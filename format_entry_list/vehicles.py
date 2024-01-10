@@ -22,6 +22,6 @@ vehicles = {
     'callawayCorvetteZ066rGt3': 'Callaway Corvette Z06R GT3',
     'astonMartinVantageAmrr': 'Aston Martin Vantage AMR GT4',
     'mercedesamgGt3': 'Mercedes-AMG GT3',
-    'bmwM4Gt42': 'BMW M4 GT4'
-
+    'bmwM4Gt42': 'BMW M4 GT4',
+    'porsche718CaymanGt42': "Porsche 718 Cayman GT4 RS CS",
 }
