@@ -15,6 +15,7 @@ vehicles = {
     'mercedes-amgGt4': 'Mercedes-AMG GT4',
     'porsche718CaymanGt4RsClubsport': 'Porsche 718 Cayman GT4 RS Clubsport',
     'toyotaGazooRacingGrSupraGt4Evo': 'Toyota Gazoo Racing GR Supra GT4 EVO',
+    'toyotaGazooRacingGr': "Toyota Gazoo Racing GR Supra GT4 EVO",
     'acuraIntegraTypeS': 'Acura Integra Type S TCX',
     'subaruBrz': 'Subaru BRZ',
     'audiR8LmsGt4': 'Audi R8 LMS GT4',
@@ -24,4 +25,5 @@ vehicles = {
     'mercedesamgGt3': 'Mercedes-AMG GT3',
     'bmwM4Gt42': 'BMW M4 GT4',
     'porsche718CaymanGt42': "Porsche 718 Cayman GT4 RS CS",
+    'astonMartinVantageAmr': "Aston Martin Vantage AMR GT3"
 }
