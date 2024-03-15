@@ -16,7 +16,8 @@ def fetch_entries():
             url="https://api.webconnex.com/v2/public/search/tickets",
             params={
                 "product": "ticketspice.com",
-                "formId": form
+                "formId": form,
+                "limit": "250",
             },
             headers={
                 'apiKey': token
@@ -24,8 +25,11 @@ def fetch_entries():
         )
         if response.status_code == 200:
             data = response.json()
-
-            return data['data']
+         
+            entries = data['data']
+    
+            filtered = [entry for entry in entries if entry['levelLabel'] == "EVENT ENTRY"]
+            return filtered
 
     except requests.exceptions.RequestException:
         print(f'HTTP Request failed error {response.status_code}')
