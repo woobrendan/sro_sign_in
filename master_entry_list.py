@@ -1,7 +1,7 @@
 from event_entries.writeToMasterEntry import writeToMasterEntry
 from event_entries.getCurrentEntries import getCurrentEntries
 from utility.fetch_entries import fetch_entries
-from utility.utility import filterEntriesById
+from utility.utility import filterEntriesById, getMostRecentDate
 from utility.convertEntry import convertEntry
 import openpyxl
 
@@ -14,9 +14,12 @@ def master_entry_list():
 # take each row and convert into dict
     existing_entries = getCurrentEntries()
     existing_ids = [entry["id"] for entry in existing_entries]
+    
+# Get most recent date because of webconnex 250 limit
+    recent_date = getMostRecentDate(sheet)
 
 # fetch responses and convert to dict
-    api_entries = fetch_entries()
+    api_entries = fetch_entries(recent_date)
     event_entries = [
         entry for entry in api_entries if entry["levelLabel"] == "EVENT ENTRY"]
     converted = [convertEntry(entry) for entry in event_entries]
@@ -30,7 +33,7 @@ def master_entry_list():
         event = entry.get('event', 'Event Error')
         series = entry.get('series', 'Series Error')
         team = entry.get('team', 'Team Error')
-        num = entry.get(('number'))
+        num = entry.get('number')
         print(f"New Entry Added:  {event} -- {series} -- {team} -- #{num}")
 
 # add those new entries to entry lists
