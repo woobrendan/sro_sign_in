@@ -6,23 +6,27 @@ import os
 load_dotenv()
 
 
-def fetch_entries():
+def fetch_entries(date):
 
     token = os.environ.get('TKSPICE')
     form = os.environ.get('FORM_ID')
 
     try:
+        params = {
+            "product": "ticketspice.com",
+            "formId": form,
+            "limit": "250",
+        }
+        # take in date param to limit fetched order num
+        if date is not None:
+            params["date"] = date
+            
         response = requests.get(
             url="https://api.webconnex.com/v2/public/search/tickets",
-            params={
-                "product": "ticketspice.com",
-                "formId": form,
-                "limit": "250",
-            },
-            headers={
-                'apiKey': token
-            }
+            params=params,
+            headers={ 'apiKey': token }
         )
+        
         if response.status_code == 200:
             data = response.json()
          
