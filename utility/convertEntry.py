@@ -9,7 +9,8 @@ def convertSeries(series):
         'gtsSprintx': "GT4 America",
         'gtSportsClub': "GT America",
         "sprintX": "GT World Challenge America",
-        "tc": "TC America"
+        "tc": "TC America",
+        "grCup": "Toyota GR Cup"
     }
 
     return series_list.get(series, f'Series Error {series}')
