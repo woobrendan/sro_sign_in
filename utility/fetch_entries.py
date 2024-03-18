@@ -16,6 +16,7 @@ def fetch_entries(date):
             "product": "ticketspice.com",
             "formId": form,
             "limit": "250",
+            "status": "completed"
         }
         # take in date param to limit fetched order num
         if date is not None:
