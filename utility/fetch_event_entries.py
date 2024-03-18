@@ -6,7 +6,7 @@ import os
 load_dotenv()
 
 
-def fetch_event_entries():
+def fetch_event_entries(event):
 
     token = os.environ.get('TKSPICE')
     form = os.environ.get('FORM_ID')
@@ -33,7 +33,7 @@ def fetch_event_entries():
          
             entries = data['data']
     
-            filtered = [entry for entry in entries if entry['levelLabel'] == "EVENT ENTRY"]
+            filtered = [entry for entry in entries if entry['levelLabel'] == "EVENT ENTRY" and (entry['eventLabel'] == event or entry['eventLabel'] == 'FULL SEASON ENTRY')]
             return filtered
 
     except requests.exceptions.RequestException:
