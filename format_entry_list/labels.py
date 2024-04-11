@@ -17,6 +17,7 @@ labels = [
 car_types = [
     'TCX Car Make / Model',
     'TC Car Make / Model',
+    'TC Car Make/Model',
     'TCA Car Make/Model',
     "FGTWCA Car Make / Model",
     'GTA Car Make/Model',
