@@ -116,6 +116,8 @@ def convertEntry(entry):
 
                 if label == 'Car Series':
                     new_entry["series"] = convertSeries(field["value"])
+                    new_entry['car'] = "Toyota GR86"
+                    new_entry['manufacturer'] = "Toyota"
                     break
 
                 if label == "Registered Car #":
