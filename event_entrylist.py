@@ -10,11 +10,10 @@ import json
 def event_entrylist(series_entries, event):
     wb = openpyxl.load_workbook('./templates/entry_list_template.xlsx')
 
-    file_name = "Sonoma Provisional Entry List"
+    file_name = "Sebring Provisional Entry List"
 
     for series in ['GTAM', 'TCAM', 'GR Cup']:
         entries = series_entries[series]
-
         handle_single_driver(wb, entries, event)
 
     for series in ['GTWCA', 'PGT4A']:
@@ -26,12 +25,12 @@ def event_entrylist(series_entries, event):
 
 
 if __name__ == "__main__":
-    event = "Sonoma Raceway"
+    event = "Sebring International Raceway"
     data = fetch_entries()
     sorted_entries = sortByEvent(data)
 
     # add in test data to sonoma
-    sorted_entries[event] += sorted_entries['FULL SEASON ENTRY'] + test_entries
+    sorted_entries[event] += sorted_entries['FULL SEASON ENTRY']
 
     entries = sorted_entries.get(event)
     series_entries = sortBySeries(entries)
