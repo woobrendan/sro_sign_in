@@ -6,7 +6,7 @@ import os
 load_dotenv()
 
 
-def fetch_entries(date):
+def fetch_entries():
 
     token = os.environ.get('TKSPICE')
     form = os.environ.get('FORM_ID')
@@ -19,8 +19,8 @@ def fetch_entries(date):
             "status": "completed"
         }
         # take in date param to limit fetched order num
-        if date is not None:
-            params["date"] = date
+        # if date is not None:
+        #     params["date"] = date
             
         response = requests.get(
             url="https://api.webconnex.com/v2/public/search/tickets",
