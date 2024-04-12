@@ -1,8 +1,14 @@
 import openpyxl
+import os
 
 
 def create_drivers_signin(series_entries, event):
     wb = openpyxl.load_workbook('./templates/driver_master.xlsx')
+
+    drivers_direct = "./sign_in_sheets/drivers/"
+
+    if not os.path.exists(drivers_direct):
+        os.makedirs(drivers_direct)
 
     for series, entries in series_entries.items():
         sheet = wb[series]
