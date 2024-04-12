@@ -1,10 +1,16 @@
 import openpyxl
 from format_sign_in.event_log import event_log
 from utility.sortFuncs import get_teams_carNums
+import os
 
 
 def create_manager_signin(series_entries, event):
     wb = openpyxl.load_workbook('./templates/manager_signin.xlsx')
+    manager_direct = "./sign_in_sheets/manager/"
+
+    if not os.path.exists(manager_direct):
+        os.makedirs(manager_direct)
+
 
     for series, entries in series_entries.items():
         sheet = wb[series]
