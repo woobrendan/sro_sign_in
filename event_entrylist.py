@@ -29,7 +29,6 @@ if __name__ == "__main__":
     data = fetch_entries()
     sorted_entries = sortByEvent(data)
 
-    # add in test data to sonoma
     sorted_entries[event] += sorted_entries['FULL SEASON ENTRY']
 
     entries = sorted_entries.get(event)
