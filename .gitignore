@@ -32,5 +32,7 @@ yarn-error.log*
 
 setting.json
 
+/sign_in_sheets/*.xlsx
+
 *.csv
 /event_entries/*.xlsx
