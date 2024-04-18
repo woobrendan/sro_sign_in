@@ -41,4 +41,5 @@ vehicles = {
     "lamborghiniHuracanSuperTrofeo2": "Lamborghini Huracan Super Trofeo EVO2",
     "porsche718CaymanGt4": "Porsche 718 Cayman GT4 RS Clubsport",
     "mercedesamgGt4": "Mercedes-AMG GT4",
+    "chevroletCorvetteZ06Gt3r": "Chevrolet Corvette"
 }
