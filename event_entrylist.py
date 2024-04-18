@@ -13,17 +13,14 @@ def event_entrylist(event):
     wb = openpyxl.load_workbook('./templates/entry_list_template.xlsx')
 
     series_entries = sortBySeries(fetch_event_entries(event))
-    # print(json.dumps(series_entries, indent=4))
 
     file_name = f"{event} Provisional Entry List"
 
     for series in ['GTAM', 'TCAM', 'GR Cup']:
-        # series_long = series_long_name(series)
         entries = series_entries[series]
         handle_single_driver(wb, entries, event)
 
     for series in ['GTWCA', 'PGT4A']:
-        # series_long = series_long_name(series)
         entries = series_entries[series]
 
         handle_dual_driver(wb, entries, event)
@@ -32,7 +29,7 @@ def event_entrylist(event):
 
 
 if __name__ == "__main__":
-    event = "Sebring International Raceway"
+    event = "Circuit of the Americas"
     # data = fetch_entries()
     # sorted_entries = sortByEvent(data)
 
