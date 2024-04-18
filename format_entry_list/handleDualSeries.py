@@ -1,4 +1,3 @@
-from utility.sortFuncs import sortEntriesByClass
 from utility.utility import getSeriesShort
 from utility.events import sro_events
 
@@ -10,10 +9,7 @@ def handle_dual_driver(wb, entries, event):
     sheet = wb[series_short]
     current = 7
 
-    sort_arr = ['Pro', 'Pro-Am', 'Am'] if series_short == 'GTWCA' else [
-        'Silver', 'Pro-Am', 'Am']
-
-    sorted_entries = sortEntriesByClass(entries, sort_arr)
+    sorted_entries = sorted(entries, key=lambda x: int(x["number"]))
 
     # Entry list title, event name and date
     sheet['D2'] = event
