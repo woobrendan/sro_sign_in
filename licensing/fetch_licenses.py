@@ -9,15 +9,19 @@ load_dotenv()
 def fetch_licenses():
 
     token = os.environ.get('TKSPICE')
-    form = os.environ.get('LIC_ID')
+    form = os.environ.get('RED_POD')
 
     try:
+
+        params = {
+            "product": "redpodium.com",
+            "formId": form,
+            "limit": "250",
+            "status":"completed"
+        }
         response = requests.get(
             url="https://api.webconnex.com/v2/public/search/registrants",
-            params={
-                "product": "redpodium.com",
-                "formId": form
-            },
+            params=params,
             headers={
                 'apiKey': token
             }
