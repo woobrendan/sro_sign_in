@@ -14,12 +14,12 @@ labels = [
 ]
 
 license_labels = [
-    "firstName",
-    "lastName",
+    "First Name",
+    "Last Name",
     "email",
     "event",
     "ticketType",
-    "DOB"
+    "Date of Birth"
 ]
 
 
