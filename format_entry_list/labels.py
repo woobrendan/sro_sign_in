@@ -13,6 +13,15 @@ labels = [
     'Team Sponsors - Please seperate each Sponsor with a comma',
 ]
 
+license_labels = [
+    "firstName",
+    "lastName",
+    "email",
+    "event",
+    "ticketType",
+    "DOB"
+]
+
 
 car_types = [
     'TCX Car Make / Model',
