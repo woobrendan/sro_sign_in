@@ -6,6 +6,20 @@ def convertLicense(entry):
         'created': entry['dateCreated']
     }
 
+    for label in license_labels:
+        for field in entry['fieldData']:
+
+            # Get Registrant Info
+            if label == 'First Name' and field['path'] == 'name.first':
+                new_entry[label] = field['value']
+            
+            if label == 'Last Name' and field['path'] == 'name.last':
+                new_entry[label] = field['value']
+            
+            if label == 'DOB' and field['label'] == 'Date of Birth':
+                new_entry[label] = field['value']
+
+
 
 
 # {
