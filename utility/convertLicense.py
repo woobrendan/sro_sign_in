@@ -15,9 +15,13 @@ def convertLicense(entry):
             
             if label == 'Last Name' and field['path'] == 'name.last':
                 new_entry[label] = field['value']
-            
-            if label == 'DOB' and field['label'] == 'Date of Birth':
-                new_entry[label] = field['value']
+
+            if label == 'SINGLE EVENT - NON DRIVER (Crew, Sponsor, Staff, Media)':
+                 new_entry['ticketType'] = "Single Event Credential"
+
+            #handles email, dob
+            if label == field['label']:
+                    new_entry[label] = field['value']
 
 
 
