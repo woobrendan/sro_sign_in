@@ -92,3 +92,16 @@ def getMostRecentDate(sheet):
         most_recent += timedelta(seconds=1)
 
         return most_recent.strftime('%Y-%m-%dT%H:%M:%SZ')
+
+
+def getCredentialType(card_val):
+    hardCard = {
+        "sroDriverAnnual": "Driver Annual",
+        "sroCrewAnnual": "Crew Annual",
+        "sroTeamOwnerAnnual": "Team Owner Annual",
+        "sroSeriesPartnerAnnual": "Series Partner Annual",
+        "sroMediaAnnual": "Media Annual",
+        "sroSeriesAnnual": "Series Official Annual"
+    }
+
+    return hardCard.get(card_val, f'{card_val} not in list')
