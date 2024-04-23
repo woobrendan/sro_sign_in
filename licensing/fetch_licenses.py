@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-import json
+from utility.convertLicense import convertLicense
 import requests
 import os
 
@@ -28,9 +28,8 @@ def fetch_licenses():
         )
         if response.status_code == 200:
             data = response.json()
-            print(json.dumps(data['data'], indent=4))
-
-            return data['data']
+            converted = [convertLicense(entry) for entry in data['data']]
+            return converted
 
     except requests.exceptions.RequestException:
         print(f'HTTP Request failed error {response.status_code}')
