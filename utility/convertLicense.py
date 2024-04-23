@@ -1,4 +1,5 @@
 from format_entry_list.labels import license_labels
+from utility.utility import getCredentialType
 
 def convertLicense(entry):
     new_entry = {
@@ -16,8 +17,16 @@ def convertLicense(entry):
             if label == 'Last Name' and field['path'] == 'name.last':
                 new_entry[label] = field['value']
 
-            if label == 'SINGLE EVENT - NON DRIVER (Crew, Sponsor, Staff, Media)':
-                 new_entry['ticketType'] = "Single Event Credential"
+            if label == 'ticketType':
+                val = '' 
+                if field['label'] == 'SINGLE EVENT - NON DRIVER (Crew, Sponsor, Staff, Media)':
+                    val = "Single Event Credential"
+
+                if field['label'] == 'COMPETITION LICENSE TYPE':
+                    val = getCredentialType(field['value'])
+                     
+                new_entry['ticketType'] = val
+
 
             #handles email, dob
             if label == field['label']:
@@ -201,3 +210,33 @@ def convertLicense(entry):
 #         "dateCreated": "2024-04-18T03:21:53Z",
 #         "dateUpdated": "2024-04-18T03:21:54Z"
 #     }
+
+
+###### Driver annual
+
+# {
+#                 "label": "COMPETITION LICENSE TYPE",
+#                 "path": "licenseType",
+#                 "value": "sroDriverAnnual"
+#             },
+#             {
+#                 "amount": "880",
+#                 "label": "DRIVER - ANNUAL",
+#                 "path": "licenseType.sroDriverAnnual",
+#                 "value": "true"
+#             },
+
+
+## Crew Annual
+
+# {
+            #     "label": "COMPETITION LICENSE TYPE",
+            #     "path": "licenseType",
+            #     "value": "sroCrewAnnual"
+            # },
+            # {
+            #     "amount": "550",
+            #     "label": "CREW - ANNUAL",
+            #     "path": "licenseType.sroCrewAnnual",
+            #     "value": "true"
+            # },
