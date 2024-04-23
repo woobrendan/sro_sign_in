@@ -13,9 +13,11 @@ def convertLicense(entry):
             # Get Registrant Info
             if label == 'First Name' and field['path'] == 'name.first':
                 new_entry[label] = field['value']
+                break
             
             if label == 'Last Name' and field['path'] == 'name.last':
                 new_entry[label] = field['value']
+                break
 
             if label == 'ticketType':
                 val = '' 
@@ -32,11 +34,14 @@ def convertLicense(entry):
                     new_entry['event'] = "Annual"
                      
                 new_entry['ticketType'] = val
+                break
 
 
             #handles email, dob
             if label == field['label']:
-                    new_entry[label] = field['value']
+                new_entry[label] = field['value']
+                break
+
 
 
 
