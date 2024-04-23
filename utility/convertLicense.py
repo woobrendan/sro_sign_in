@@ -22,8 +22,14 @@ def convertLicense(entry):
                 if field['label'] == 'SINGLE EVENT - NON DRIVER (Crew, Sponsor, Staff, Media)':
                     val = "Single Event Credential"
 
+                    if 'ultra4SingleEventsAre.' in field['path']:
+                        new_entry['event'] = field['label']
+                        
+                    break
+                
                 if field['label'] == 'COMPETITION LICENSE TYPE':
                     val = getCredentialType(field['value'])
+                    new_entry['event'] = "Annual"
                      
                 new_entry['ticketType'] = val
 
