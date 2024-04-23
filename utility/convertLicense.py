@@ -41,7 +41,8 @@ def convertLicense(entry):
             if label == field['label']:
                 new_entry[label] = field['value']
                 break
-
+            
+    return new_entry
 
 
 
