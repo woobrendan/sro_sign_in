@@ -1,5 +1,6 @@
 import openpyxl
 from datetime import datetime, timedelta
+from utility.convertLicense import lic_headers
 
 def getSeriesShort(series_name):
     series = {
@@ -118,21 +119,17 @@ def getAllId(sheet):
     return ids
 
 
-def addValuesToExcel(headers, entries, sheet):
-    first_row = findFirstEmptyRow(sheet)
+def addValuesToExcel(regs, sheet):
+    first_row = findFirstEmptyRow(sheet, 'A')
     first_cell = sheet.cell(row=2, column=1)
     count = 0
 
-    for entry in entries:
+    for reg in regs:
         count += 1
 
-        for i, header in enumerate(headers, start=1):
+        for i, header in enumerate(lic_headers, start=1):
             new_cell = sheet.cell(row=first_row, column=i)
-            val = entry.get(header, '')
-
-            if header in ['Car # First Choice',  'Car # Second Choice', 'Car # Third Choice', '2023 Registered Number']:
-                if not val.startswith('0') and val.isdigit():
-                    val = int(val)
+            val = reg.get(header, '')
 
             new_cell.value = val
 
