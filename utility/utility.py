@@ -103,3 +103,16 @@ def getCredentialType(card_val):
     }
 
     return hardCard.get(card_val, f'{card_val} not in list')
+
+def getAllId(sheet):
+    ids = []
+
+    column = sheet['G']
+
+    for cell in column[1:]:
+        if cell.value is not None:
+            ids.append(cell.value)
+        else:
+            break  # exit loop when cell is empty
+
+    return ids
