@@ -37,8 +37,8 @@ def get_all_teams(series_entries):
     return sorted(unique_teams)
 
 
-def findFirstEmptyRow(sheet):
-    for cell in sheet["Q"]:
+def findFirstEmptyRow(sheet, var):
+    for cell in sheet[var]:
         if cell.value is None:
             return cell.row
 
@@ -116,3 +116,31 @@ def getAllId(sheet):
             break  # exit loop when cell is empty
 
     return ids
+
+
+def addValuesToExcel(headers, entries, sheet):
+    first_row = findFirstEmptyRow(sheet)
+    first_cell = sheet.cell(row=2, column=1)
+    count = 0
+
+    for entry in entries:
+        count += 1
+
+        for i, header in enumerate(headers, start=1):
+            new_cell = sheet.cell(row=first_row, column=i)
+            val = entry.get(header, '')
+
+            if header in ['Car # First Choice',  'Car # Second Choice', 'Car # Third Choice', '2023 Registered Number']:
+                if not val.startswith('0') and val.isdigit():
+                    val = int(val)
+
+            new_cell.value = val
+
+            # set formatting of cell
+            new_cell.font = copy_font(first_cell.font)
+            new_cell.alignment = copy_alignment(first_cell.alignment)
+            new_cell.border = copy_border(first_cell.border)
+
+        first_row += 1
+
+    return count
