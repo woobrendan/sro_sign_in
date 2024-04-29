@@ -21,5 +21,5 @@ def event_signin(event):
 
 
 if __name__ == "__main__":
-    event_name = 'Long Beach Grand Prix'
+    event_name = 'Sebring International Raceway'
     event_signin(event_name)
