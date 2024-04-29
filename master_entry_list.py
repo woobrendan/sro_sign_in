@@ -16,7 +16,7 @@ def master_entry_list():
     existing_ids = [entry["id"] for entry in existing_entries]
     
 # Get most recent date because of webconnex 250 limit
-    recent_date = getMostRecentDate(sheet)
+    recent_date = getMostRecentDate(sheet, "R")
 
 # fetch responses and convert to dict
     api_entries = fetch_entries(recent_date)
