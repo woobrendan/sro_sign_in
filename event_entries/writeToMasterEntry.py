@@ -3,7 +3,7 @@ from event_entries.headers import headers
 
 
 def writeToMasterEntry(entries, sheet):
-    first = findFirstEmptyRow(sheet)
+    first = findFirstEmptyRow(sheet, 'Q')
     first_cell = sheet.cell(row=2, column=1)
 
     for entry in entries:
