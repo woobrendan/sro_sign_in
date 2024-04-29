@@ -41,7 +41,16 @@ def convertLicense(entry):
 
     return new_entry
 
-
+lic_headers = {
+    "First Name",
+    "Last Name",
+    "Email",
+    "Date of Birth",
+    "ticketType",
+    'event'
+    "id",
+    "created",
+}
 
 
 # {
