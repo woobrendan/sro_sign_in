@@ -69,10 +69,8 @@ def copy_border(border):
     )
     return new_border
 
-def getMostRecentDate(sheet):
+def getMostRecentDate(sheet, column_id):
     submit_dates = []
-
-    column_id = 'R'
 
     column = sheet[column_id]
 
