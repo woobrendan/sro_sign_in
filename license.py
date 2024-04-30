@@ -5,10 +5,8 @@ import openpyxl
 
 def license():
     wb = openpyxl.load_workbook('./licensing/2024_Licenses.xlsx')
-    entries = fetch_licenses()
-    print(json.dumps(entries, indent=4))
 
-    # handleNewLicenses(wb, entries)
+    handleNewLicenses(wb)
 
 
 
