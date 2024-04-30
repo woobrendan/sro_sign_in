@@ -1,6 +1,5 @@
 import openpyxl
 from datetime import datetime, timedelta
-from utility.convertLicense import lic_headers
 
 def getSeriesShort(series_name):
     series = {
@@ -93,18 +92,6 @@ def getMostRecentDate(sheet, column_id):
         return most_recent.strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
-def getCredentialType(card_val):
-    hardCard = {
-        "sroDriverAnnual": "Driver Annual",
-        "sroCrewAnnual": "Crew Annual",
-        "sroTeamOwnerAnnual": "Team Owner Annual",
-        "sroSeriesPartnerAnnual": "Series Partner Annual",
-        "sroMediaAnnual": "Media Annual",
-        "sroSeriesAnnual": "Series Official Annual"
-    }
-
-    return hardCard.get(card_val, f'{card_val} not in list')
-
 def getAllId(sheet):
     ids = []
 
@@ -123,6 +110,17 @@ def addValuesToExcel(regs, sheet):
     first_row = findFirstEmptyRow(sheet, 'A')
     first_cell = sheet.cell(row=2, column=1)
     count = 0
+
+    lic_headers = {
+    "First Name",
+    "Last Name",
+    "Email",
+    "Date of Birth",
+    "ticketType",
+    'event'
+    "id",
+    "created",
+}
 
     for reg in regs:
         count += 1
