@@ -1,5 +1,16 @@
 from format_entry_list.labels import license_labels
-from utility.utility import getCredentialType
+
+def getCredentialType(card_val):
+    hardCard = {
+        "sroDriverAnnual": "Driver Annual",
+        "sroCrewAnnual": "Crew Annual",
+        "sroTeamOwnerAnnual": "Team Owner Annual",
+        "sroSeriesPartnerAnnual": "Series Partner Annual",
+        "sroMediaAnnual": "Media Annual",
+        "sroSeriesAnnual": "Series Official Annual"
+    }
+
+    return hardCard.get(card_val, f'{card_val} not in list')
 
 def convertLicense(entry):
     new_entry = {
@@ -40,17 +51,6 @@ def convertLicense(entry):
                 break
 
     return new_entry
-
-lic_headers = {
-    "First Name",
-    "Last Name",
-    "Email",
-    "Date of Birth",
-    "ticketType",
-    'event'
-    "id",
-    "created",
-}
 
 
 # {
