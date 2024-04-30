@@ -6,7 +6,7 @@ import os
 load_dotenv()
 
 
-def fetch_licenses():
+def fetch_licenses(date):
 
     token = os.environ.get('TKSPICE')
     form = os.environ.get('RED_POD')
@@ -19,6 +19,10 @@ def fetch_licenses():
             "limit": "250",
             "status":"completed"
         }
+
+        if date:
+            params['dateCreatedAfter'] = date
+            
         response = requests.get(
             url="https://api.webconnex.com/v2/public/search/registrants",
             params=params,
