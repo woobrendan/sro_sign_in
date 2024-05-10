@@ -108,19 +108,23 @@ def getAllId(sheet):
 
 def addValuesToExcel(regs, sheet):
     first_row = findFirstEmptyRow(sheet, 'A')
+
+    if first_row is None:
+        first_row = 2
+
     first_cell = sheet.cell(row=2, column=1)
     count = 0
 
-    lic_headers = {
-    "First Name",
-    "Last Name",
-    "Email",
-    "Date of Birth",
-    "ticketType",
-    'event'
-    "id",
-    "created",
-}
+    lic_headers = [
+        "First Name",
+        "Last Name",
+        "Email",
+        "Date of Birth",
+        "ticketType",
+        'event',
+        "id",
+        "created",
+    ]
 
     for reg in regs:
         count += 1
