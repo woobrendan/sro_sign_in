@@ -5,6 +5,8 @@ def getCredentialType(card_val):
         "sroDriverAnnual": "Driver Annual",
         "sroCrewAnnual": "Crew Annual",
         "sroTeamOwnerAnnual": "Team Owner Annual",
+        'seriesOfficialAnnual': "Series Official",
+        "coDriverAnnual": "Team Owner",
         "sroSeriesPartnerAnnual": "Series Partner Annual",
         "sroMediaAnnual": "Media Annual",
         "sroSeriesAnnual": "Series Official Annual"
