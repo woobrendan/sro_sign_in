@@ -17,6 +17,7 @@ license_labels = [
     "First Name",
     "Last Name",
     "Email",
+    'TEXT  Number',
     "ticketType",
     "Date of Birth",
     'event'
