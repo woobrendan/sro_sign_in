@@ -8,9 +8,9 @@ def handleNewLicenses():
 
     sheet = wb['2024']
     recent_date = getMostRecentDate(sheet, "J")
-    all_ids = getAllId(sheet)
+    all_ids = getAllId(sheet, "I")
 
-    registrations = fetch_licenses()
+    registrations = fetch_licenses(recent_date)
 
     filtered_reg = filterEntriesById(all_ids, registrations)
 
@@ -18,7 +18,7 @@ def handleNewLicenses():
 
     print(f'{count} registrations have been added to the licensing document')
 
-    # wb.save(f'2024_Licsenes_updated.xlsx')
+    wb.save(f'2024_Licsenes_updated.xlsx')
 
 
 if __name__ == "__main__":
