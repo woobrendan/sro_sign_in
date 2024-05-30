@@ -2,17 +2,19 @@ from dotenv import load_dotenv
 from utility.convertLicense import convertLicense
 import requests
 import os
+import json
+import httpx
 
 load_dotenv()
 
 
 def fetch_licenses(date):
 
-    token = os.environ.get('TKSPICE')
+    token = os.environ.get('KEY')
     form = os.environ.get('RED_POD')
-
+ 
     try:
-
+        url="https://api.webconnex.com/v2/public/search/registrants"
         params = {
             "product": "redpodium.com",
             "formId": form,
@@ -20,20 +22,21 @@ def fetch_licenses(date):
             "status":"completed"
         }
 
-        if date:
-            params['dateCreatedAfter'] = date
-            
-        response = requests.get(
-            url="https://api.webconnex.com/v2/public/search/registrants",
-            params=params,
-            headers={
+        headers={
                 'apiKey': token
             }
-        )
+
+        if date:
+            params['dateCreatedAfter'] = date
+
+        response = httpx.get(url, params=params, headers=headers)
+
         if response.status_code == 200:
             data = response.json()
             converted = [convertLicense(entry) for entry in data['data']]
             return converted
+        else:
+            print('Error:', response.status_code)
 
     except requests.exceptions.RequestException:
         print(f'HTTP Request failed error {response.status_code}')
