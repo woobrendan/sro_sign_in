@@ -16,7 +16,7 @@ def getCredentialType(card_val):
 
 def convertLicense(entry):
     new_entry = {
-        "id": entry["id"],
+        "id": entry["displayId"],
         'created': entry['dateCreated']
     }
 
