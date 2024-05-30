@@ -1,9 +1,10 @@
 import openpyxl
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 
 def getSeriesShort(series_name):
     series = {
         'GT4 America': 'PGT4A',
+        'Pirelli GT4 America': 'PGT4A',
         'GT World Challenge America': 'GTWCA',
         'GT America': 'GTAM',
         'TC America': 'TCAM',
@@ -81,15 +82,10 @@ def getMostRecentDate(sheet, column_id):
             break
 
     if submit_dates:
-        # convert each date string into date obj, get max then return as str
-        date_objs = [datetime.strptime(date, '%Y-%m-%dT%H:%M:%SZ')
-                     for date in submit_dates]
-
-        most_recent = max(date_objs)
-
-        most_recent += timedelta(seconds=1)
-
-        return most_recent.strftime('%Y-%m-%dT%H:%M:%SZ')
+        latest_date = submit_dates[-1]
+        return latest_date
+    else:
+        return date.today()
 
 
 def getAllId(sheet):
