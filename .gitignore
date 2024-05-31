@@ -37,3 +37,7 @@ sign_in_sheets/managers/*.xlsx
 
 *.csv
 /event_entries/*.xlsx
+/licensing/*.xlsx
+/entry_lists/*.xlsx
+/sign_in_sheets/manager/*.xlsx
+/sign_in_sheets/drivers/*.xlsx
