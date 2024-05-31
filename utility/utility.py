@@ -129,7 +129,7 @@ def addValuesToExcel(regs, sheet):
 
         for i, header in enumerate(lic_headers, start=1):
             new_cell = sheet.cell(row=first_row, column=i)
-            val = reg.get(header, '')
+            val = reg.get(header, f'couldnt retrieve {header}')
 
             new_cell.value = val
 
