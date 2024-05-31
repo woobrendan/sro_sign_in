@@ -4,7 +4,7 @@ import openpyxl
 
 def handleNewLicenses():
 
-    wb = openpyxl.load_workbook('./licensing/2024_Licenses.xlsx')
+    wb = openpyxl.load_workbook('../2024_Licenses.xlsx')
 
     sheet = wb['2024']
     recent_date = getMostRecentDate(sheet, "J")
@@ -18,7 +18,7 @@ def handleNewLicenses():
 
     print(f'{count} registrations have been added to the licensing document')
 
-    wb.save(f'licensing/2024_Licsenes_updated.xlsx')
+    wb.save(f'../2024_Licsenes_updated.xlsx')
 
 
 if __name__ == "__main__":
