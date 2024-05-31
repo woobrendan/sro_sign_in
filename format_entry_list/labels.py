@@ -16,6 +16,7 @@ labels = [
 license_labels = [
     "First Name",
     "Last Name",
+    'Team',
     "Email",
     'TEXT  Number',
     "ticketType",
