@@ -88,10 +88,10 @@ def getMostRecentDate(sheet, column_id):
         return date.today()
 
 
-def getAllId(sheet):
+def getAllId(sheet, column_id):
     ids = []
 
-    column = sheet['G']
+    column = sheet[column_id]
 
     for cell in column[1:]:
         if cell.value is not None:
@@ -114,7 +114,9 @@ def addValuesToExcel(regs, sheet):
     lic_headers = [
         "First Name",
         "Last Name",
+        'Team',
         "Email",
+        'TEXT  Number',
         "Date of Birth",
         "ticketType",
         'event',
