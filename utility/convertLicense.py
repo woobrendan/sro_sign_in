@@ -31,7 +31,15 @@ def convertLicense(entry):
             if label == 'Last Name' and field['path'] == 'name.last':
                 new_entry[label] = field['value']
                 break
-
+            
+            if label == 'Team':
+                if 'pleaseSelect.' in field['path']:
+                    new_entry['Team'] = field['label']
+                    break
+                if 'nameOfMedia' in field['path']:
+                    new_entry['Team'] = field['label']
+                    break
+            
 
             if label == 'ticketType' and field.get('value') == 'singleEventNonDriver':
                 new_entry['ticketType'] = "Single Event Credential"
