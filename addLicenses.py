@@ -1,4 +1,5 @@
-from utility.utility import getMostRecentDate, getAllId, filterEntriesById, addValuesToExcel
+from utility.utility import getAllId, filterEntriesById, addValuesToExcel
+from utility.handle_dates import getMostRecentDate
 from licensing.fetch_licenses import fetch_licenses
 import openpyxl
 
