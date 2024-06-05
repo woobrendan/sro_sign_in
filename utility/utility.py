@@ -70,24 +70,6 @@ def copy_border(border):
     )
     return new_border
 
-def getMostRecentDate(sheet, column_id):
-    submit_dates = []
-
-    column = sheet[column_id]
-
-    for cell in column[1:]:
-        if cell.value is not None:
-            submit_dates.append(cell.value)
-        else:
-            break
-
-    if submit_dates:
-        latest_date = submit_dates[-1]
-        return latest_date
-    else:
-        return date.today()
-
-
 def getAllId(sheet, column_id):
     ids = []
 
