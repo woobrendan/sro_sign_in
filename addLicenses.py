@@ -22,7 +22,7 @@ def handleNewLicenses():
 
     print(f'{count} registrations have been added to the licensing document')
 
-    wb.save(f'../2024_Licsenes_updated.xlsx')
+    wb.save(f'../2024_Licenses_updated.xlsx')
 
 
 if __name__ == "__main__":
