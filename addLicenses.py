@@ -6,9 +6,9 @@ import json
 
 def handleNewLicenses():
 
-    wb = openpyxl.load_workbook('../2024_Licenses.xlsx')
+    wb = openpyxl.load_workbook('../2025 - Registration/2025_License.xlsx')
 
-    sheet = wb['2024']
+    sheet = wb['2025']
     recent_date = getMostRecentDate(sheet, "J")
     all_ids = getAllId(sheet, "I")
 
@@ -22,7 +22,7 @@ def handleNewLicenses():
 
     print(f'{count} registrations have been added to the licensing document')
 
-    wb.save(f'../2024_Licenses_updated.xlsx')
+    wb.save(f'../2025 - Registration/2025_Licenses_updated_DNU.xlsx')
 
 
 if __name__ == "__main__":
