@@ -11,7 +11,6 @@ load_dotenv()
 def fetch_licenses(date):
 
     token = os.environ.get('KEY')
-    # form = os.environ.get('RED_POD')
     form = os.environ.get('2025_REDPOD')
  
     try:
@@ -34,7 +33,6 @@ def fetch_licenses(date):
 
         if response.status_code == 200:
             data = response.json()
-            print('response------', data)
             converted = [convertLicense(entry) for entry in data['data']]
             return converted
         else:
