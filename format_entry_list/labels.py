@@ -21,7 +21,8 @@ license_labels = [
     'TEXT  Number',
     "ticketType",
     "Date of Birth",
-    'event'
+    'event',
+    "Coupon Code"
 ]
 
 
