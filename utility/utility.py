@@ -102,6 +102,7 @@ def addValuesToExcel(regs, sheet):
         "Date of Birth",
         "ticketType",
         'event',
+        'Coupon Code',
         "id",
         "created",
     ]
