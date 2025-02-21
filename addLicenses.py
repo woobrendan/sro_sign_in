@@ -9,7 +9,7 @@ def handleNewLicenses():
     wb = openpyxl.load_workbook('../2025 - Registration/2025_License.xlsx')
 
     sheet = wb['2025']
-    recent_date = getMostRecentDate(sheet, "J")
+    recent_date = getMostRecentDate(sheet, "K")
     all_ids = getAllId(sheet, "I")
 
     registrations = fetch_licenses(recent_date)
